@@ -1,3 +1,57 @@
+<<<<<<< HEAD
+const repo = [
+  {
+    id: 1,
+    name: "Sara",
+    description: "Test test test test",
+    url: `https://www.nationalgeographic.com/animals/mammals/facts/domestic-cat`,
+    pinned: true,
+    primaryLang: "Java",
+    branches: 4,
+    star: true,
+  },
+  {
+    id: 2,
+    name: "Mark",
+    description: "Test test test test",
+    url: `https://www.nationalgeographic.com/animals/mammalshttps://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-jumbo.jpg?quality=75&auto=webp/facts/domestic-cat`,
+    pinned: true,
+    primaryLang: "Python",
+    branches: 3,
+    star: false,
+  },
+  {
+    id: 3,
+    name: "Mary",
+    description: "Test test test test",
+    url: `https://cdn.theatlantic.com/thumbor/viW9N1IQLbCrJ0HMtPRvXPXShkU=/0x131:2555x1568/976x549/media/img/mt/2017/06/shutterstock_319985324/original.jpg`,
+    pinned: true,
+    primaryLang: "Javascript",
+    branches: 3,
+    star: false,
+  },
+  {
+    id: 4,
+    name: "Susan",
+    description: "Test test test test",
+    url: `https://static.scientificamerican.com/sciam/cache/file/32665E6F-8D90-4567-9769D59E11DB7F26_source.jpg?w=590&h=800&7E4B4CAD-CAE1-4726-93D6A160C2B068B2`,
+    pinned: true,
+    primaryLang: "C+",
+    branches: 3,
+    star: false,
+  },
+  {
+    id: 5,
+    name: "Tina",
+    description: "Test test test test",
+    url: `https://www.rd.com/wp-content/uploads/2021/01/GettyImages-1175550351.jpg?resize=1536,1004`,
+    pinned: true,
+    primaryLang: "Go",
+    branches: 3,
+    star: false,
+  },
+];
+=======
 const projectDataSet = [
   {
     id: 1, 
@@ -43,3 +97,4 @@ const projectDataSet = [
 
 
 export { projectDataSet }
+>>>>>>> main
