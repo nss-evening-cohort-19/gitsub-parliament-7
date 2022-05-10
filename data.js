@@ -151,4 +151,4 @@ const projectDataSet = [
   },
 ];
 
-export { projectDataSet, packages, repo };
+export { projectDataSet, repo, packages };
