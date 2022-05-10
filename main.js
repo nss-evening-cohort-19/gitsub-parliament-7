@@ -1,7 +1,5 @@
 import { projectDataSet, packages, repo } from "./data.js";
 
-for (const item of )
-
 const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToRender;
