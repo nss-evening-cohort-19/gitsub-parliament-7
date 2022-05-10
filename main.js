@@ -1,4 +1,4 @@
-import { projectDataSet } from "./data.js";
+import { projectDataSet, repo, packages } from "./data.js";
 
 const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
