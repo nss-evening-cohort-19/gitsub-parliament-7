@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const repo = [
   {
     id: 1,
@@ -51,7 +50,6 @@ const repo = [
     star: false,
   },
 ];
-=======
 const projectDataSet = [
   {
     id: 1, 
@@ -97,4 +95,3 @@ const projectDataSet = [
 
 
 export { projectDataSet }
->>>>>>> main
