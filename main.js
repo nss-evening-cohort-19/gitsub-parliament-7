@@ -1,4 +1,4 @@
-console.log("connected");
+import { projectDataSet } from "./data.js";
 
 const renderToDom = (divId, textToRender) => {
   selectedDiv = document.querySelector(divId);
