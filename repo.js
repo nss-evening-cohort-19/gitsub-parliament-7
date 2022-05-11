@@ -4,7 +4,7 @@ import { renderToDom } from "./utils/renderToDom.js";
 const renderRepos = (array) => {
   let domString = "";
   for (const item of array) {
-    domString = `
+    domString += `
     <div class="card" style="width: 18rem;">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">${item.name}</li>
