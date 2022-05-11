@@ -136,23 +136,23 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-const reposOnDom = (array) => {
-let domString = "";
-for (const item of array){
-  domString = `
-  <div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${item.name}</li>
-    <li class="list-group-item">${item.description}</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-footer">
-    Card footer
-  </div>
-</div>`
-};
-renderToDom("#repoCards", domString)
-};
+// const reposOnDom = (array) => {
+// let domString = "";
+// for (const item of array){
+//   domString = `
+//   <div class="card" style="width: 18rem;">
+//   <ul class="list-group list-group-flush">
+//     <li class="list-group-item">${item.name}</li>
+//     <li class="list-group-item">${item.description}</li>
+//     <li class="list-group-item">A third item</li>
+//   </ul>
+//   <div class="card-footer">
+//     Card footer
+//   </div>
+// </div>`
+// };
+// renderToDom("#repoCards", domString)
+// };
 
 
 
@@ -194,6 +194,10 @@ renderNav();
 renderProfile();
 renderAbout();
 renderFooter();
-reposOnDom(repo);
+//reposOnDom(repo);
+renderProjectCards(projectDataSet);
+renderProjectForm()
+renderPackagesCards(packages);
+renderPackagesForm();
 // renderProjectCards(projectDataSet);
 // renderProjectForm();
