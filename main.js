@@ -4,6 +4,7 @@ const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToRender;
 };
+d;
 
 const renderNav = () => {
   let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -138,8 +139,7 @@ const renderFooter = () => {
 const renderPackagesCards = (taco) => {
   let domString = "";
   for (const item of taco) {
-    domString += 
-`<div class="card" style="width: 18rem;">
+    domString += `<div class="card" style="width: 18rem;">
   <img src="${item.image}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${item.name}</h5>
@@ -178,7 +178,6 @@ const renderPackagesForm = () => {
   renderToDom("#packagesForm", domString);
 };
 
-
 const renderProjectCards = (arr) => {
   let domString = `
   <div class="card" style="width: 18rem;">
@@ -193,17 +192,6 @@ const renderProjectCards = (arr) => {
     </div>`;
   renderToDom("#project-card-div", domString);
 };
-    <ul class="list-group list-group-flush">`
-  for (const item of arr) {
-    domString += `<li class="list-group-item"><h5>${item.name}</h5> <p>${item.description}</p></li>`
-  }
-  domString +=
-    `</ul>
-    </div>`;
-  renderToDom("#project-card-div", domString)
-};
-
-
 
 renderNav();
 renderProfile();
