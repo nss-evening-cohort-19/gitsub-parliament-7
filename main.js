@@ -136,7 +136,6 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-<<<<<<< HEAD
 const reposOnDom = (array) => {
 let domString = "";
 for (const item of array){
@@ -155,7 +154,6 @@ for (const item of array){
 renderToDom("#repoCards", domString)
 };
 
-=======
 const renderPackagesCards = (taco) => {
   let domString = "";
   for (const item of taco) {
@@ -197,7 +195,6 @@ const renderPackagesForm = () => {
 </form>`;
   renderToDom("#packagesForm", domString);
 };
->>>>>>> main
 
 const renderProjectCards = (arr) => {
   let domString = `
@@ -219,6 +216,6 @@ renderProfile();
 renderAbout();
 renderFooter();
 reposOnDom(repo);
-renderProjectCards(projectDataSet);
-renderPackagesCards(packages);
-renderPackagesForm();
+//renderProjectCards(projectDataSet);
+//renderPackagesCards(packages);
+//renderPackagesForm();
