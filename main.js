@@ -1,11 +1,6 @@
 import { projectDataSet, repo, packages } from "./data.js";
 import { renderToDom } from "./utils/renderToDom.js";
 
-// const renderToDom = (divId, textToRender) => {
-//   const selectedDiv = document.querySelector(divId);
-//   selectedDiv.innerHTML = textToRender;
-// };
-
 const renderNav = () => {
   let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -108,7 +103,31 @@ const renderAbout = () => {
 };
 
 const pinnedRepo = (arr) => {
-  let domString = "";
+  let domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
+  <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Customize your pins 
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit pinned items</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <ul id="repoList" class="list-group">
+        </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="savePinned" type="button" class="btn btn-primary">Save as Pinned</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
   for (const pin of arr) {
     if (pin.pinned) {
       domString += `
@@ -156,8 +175,37 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-renderNav();
-renderProfile();
-renderAbout();
-pinnedRepo(repo);
-renderFooter();
+const pinRepoEvent = () => {
+  document.querySelector("#pinnedRepos").addEventListener("click", (e) => {
+    if (e.target.id === "repoModal-btn") {
+      let repoList = "";
+      for (const i of repo) {
+        repoList += `<li class="list-group-item">
+        <input id="repo${i.id}" class="form-check-input me-1" type="checkbox" value="..." aria-label="...">
+        ${i.name}
+      </li>`;
+      }
+      renderToDom("#repoList", repoList);
+    }
+    if (e.target.id === "savePinned") {
+      console.log(repoList);
+      var numFour = document.querySelector("#repo4");
+      if (numFour.checked) {
+        console.log("Susan checked the box");
+      } else {
+        console.log("no check");
+      }
+    }
+  });
+};
+
+const onStart = () => {
+  renderNav();
+  renderProfile();
+  renderAbout();
+  pinnedRepo(repo);
+  renderFooter();
+  pinRepoEvent();
+};
+
+onStart();
