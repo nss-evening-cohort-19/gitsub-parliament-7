@@ -136,6 +136,24 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
+const reposOnDom = (array) => {
+let domString = "";
+for (const item of array){
+  domString = `
+  <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${item.name}</li>
+    <li class="list-group-item">${item.description}</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-footer">
+    Card footer
+  </div>
+</div>`
+};
+renderToDom("#repoCards", domString)
+};
+
 const renderPackagesCards = (taco) => {
   let domString = "";
   for (const item of taco) {
@@ -193,10 +211,31 @@ const renderProjectCards = (arr) => {
   renderToDom("#project-card-div", domString);
 };
 
+const renderProjectForm = () => {
+  let domString = `
+    <div>
+      <h2>Create a new project</h2>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Project board name</label>
+        <textarea class="form-control" id="projectBoardFormName" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
+        <textarea class="form-control" id="projectBoardFormDescription" rows="3"></textarea>
+      </div>
+    </div>
+  `;
+  renderToDom("#project-form-div", domString)
+}
+
+
+
 renderNav();
 renderProfile();
 renderAbout();
 renderFooter();
+reposOnDom(repo);
 renderProjectCards(projectDataSet);
+renderProjectForm()
 renderPackagesCards(packages);
 renderPackagesForm();
