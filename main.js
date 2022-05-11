@@ -194,14 +194,10 @@ renderNav();
 renderProfile();
 renderAbout();
 renderFooter();
-<<<<<<< HEAD
 //reposOnDom(repo);
 renderProjectCards(projectDataSet);
 renderProjectForm()
 renderPackagesCards(packages);
 renderPackagesForm();
-=======
-reposOnDom(repo);
 // renderProjectCards(projectDataSet);
 // renderProjectForm();
->>>>>>> main
