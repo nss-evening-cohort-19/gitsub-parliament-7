@@ -4,7 +4,7 @@ const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToRender;
 };
-d;
+
 
 const renderNav = () => {
   let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
