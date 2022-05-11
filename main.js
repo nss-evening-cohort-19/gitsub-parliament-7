@@ -107,6 +107,25 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
+const renderProjectCards = (arr) => {
+  let domString = `
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+    Projects
+    </div>
+    <ul class="list-group list-group-flush">`
+  for(const item of arr) {
+    domString += `<li class="list-group-item"><h5>${item.name}</h5> <p>${item.description}</p></li>`
+  }
+  domString += 
+  `</ul>
+    </div>`; 
+  renderToDom("#project-card-div", domString)
+}
+
+
+
 renderNav();
 renderProfile();
 renderFooter();
+renderProjectCards(projectDataSet);
