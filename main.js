@@ -70,8 +70,26 @@ const renderProjectCards = (arr) => {
   renderToDom("#project-card-div", domString)
 }
 
+const renderProjectForm = () => {
+  let domString = `
+    <div>
+      <h2>Create a new project</h2>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Project board name</label>
+        <textarea class="form-control" id="projectBoardFormName" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
+        <textarea class="form-control" id="projectBoardFormDescription" rows="3"></textarea>
+      </div>
+    </div>
+  `;
+  renderToDom("#project-form-div", domString)
+}
+
 
 
 renderNav();
 renderFooter();
 renderProjectCards(projectDataSet);
+renderProjectForm()
