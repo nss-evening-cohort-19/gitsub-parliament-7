@@ -79,33 +79,33 @@ const renderProfile = () => {
   renderToDom("#profile", domString);
 };
 
-const renderAbout = () => {
-  const domString = `<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
-    <img src="..." class="card-img-bottom" alt="...">
-    <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
-    <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Find Me Around The Wen</h5>
-        <ul>
-          <li> Learning to Rap in the <a href="#">Community</a></li>
-          <li> Turning the knobs in the <a href="#">Studio</a></li>
-          <li> Check me out on the <a href="#">Socials</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-  </div>
-</div>`;
-  renderToDom("#aboutMe", domString);
-};
+// const renderAbout = () => {
+//   const domString = `<div class="card">
+//   <div class="card-body">
+//     <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
+//     <img src="..." class="card-img-bottom" alt="...">
+//     <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
+//     <div class="card mb-3" style="max-width: 540px;">
+//   <div class="row g-0">
+//     <div class="col-md-4">
+//       <img src="..." class="img-fluid rounded-start" alt="...">
+//     </div>
+//     <div class="col-md-8">
+//       <div class="card-body">
+//         <h5 class="card-title">Find Me Around The Wen</h5>
+//         <ul>
+//           <li> Learning to Rap in the <a href="#">Community</a></li>
+//           <li> Turning the knobs in the <a href="#">Studio</a></li>
+//           <li> Check me out on the <a href="#">Socials</a></li>
+//         </ul>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//   </div>
+// </div>`;
+//   renderToDom("#aboutMe", domString);
+// };
 
 const renderFooter = () => {
   let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -136,68 +136,7 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-// const reposOnDom = (array) => {
-// let domString = "";
-// for (const item of array){
-//   domString = `
-//   <div class="card" style="width: 18rem;">
-//   <ul class="list-group list-group-flush">
-//     <li class="list-group-item">${item.name}</li>
-//     <li class="list-group-item">${item.description}</li>
-//     <li class="list-group-item">A third item</li>
-//   </ul>
-//   <div class="card-footer">
-//     Card footer
-//   </div>
-// </div>`
-// };
-// renderToDom("#repoCards", domString)
-// };
-
-
-
-const renderProjectCards = (arr) => {
-  let domString = `
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-    Projects
-    </div>
-    <ul class="list-group list-group-flush">`;
-  for (const item of arr) {
-    domString += `<li class="list-group-item"><h5>${item.name}</h5> <p>${item.description}</p></li>`;
-  }
-  domString += `</ul>
-    </div>`;
-  renderToDom("#project-card-div", domString);
-};
-
-const renderProjectForm = () => {
-  let domString = `
-    <div>
-      <h2>Create a new project</h2>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Project board name</label>
-        <textarea class="form-control" id="projectBoardFormName" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
-        <textarea class="form-control" id="projectBoardFormDescription" rows="3"></textarea>
-      </div>
-    </div>
-  `;
-  renderToDom("#project-form-div", domString)
-}
-
-
-
 renderNav();
 renderProfile();
-renderAbout();
+// renderAbout();
 renderFooter();
-//reposOnDom(repo);
-renderProjectCards(projectDataSet);
-renderProjectForm()
-renderPackagesCards(packages);
-renderPackagesForm();
-// renderProjectCards(projectDataSet);
-// renderProjectForm();
