@@ -194,10 +194,12 @@ const pinRepoEvent = () => {
     }
     if (e.target.id === "savePinned-btn") {
       const checkboxes = document.getElementsByName("repos");
-      console.log(checkboxes);
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
-          repo[checkboxes[i].id - 1].pinned = true;
+          let indexed = repo.findIndex(
+            (find) => find.id === Number(checkboxes[i].id)
+          );
+          repo[indexed].pinned = true;
           pinnedRepo(repo);
         }
       }
