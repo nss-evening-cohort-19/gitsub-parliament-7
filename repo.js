@@ -12,7 +12,7 @@ const renderRepos = (array) => {
       <li class="list-group-item">${item.tags}</li>
     </ul>
     <div class="card-footer">
-    ${item.primaryLang} ${item.branches} ${item.star}
+    ${item.primaryLang} ${item.branches} ${item.favorite}
     </div>
   </div>`;
   }
