@@ -1,10 +1,5 @@
 import { projectDataSet, repo, packages } from "./data.js";
-
-const renderToDom = (divId, textToRender) => {
-  const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = textToRender;
-};
-
+import { renderToDom } from "./utils/renderToDom.js";
 
 const renderNav = () => {
   let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -79,33 +74,77 @@ const renderProfile = () => {
   renderToDom("#profile", domString);
 };
 
-// const renderAbout = () => {
-//   const domString = `<div class="card">
-//   <div class="card-body">
-//     <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
-//     <img src="..." class="card-img-bottom" alt="...">
-//     <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
-//     <div class="card mb-3" style="max-width: 540px;">
-//   <div class="row g-0">
-//     <div class="col-md-4">
-//       <img src="..." class="img-fluid rounded-start" alt="...">
-//     </div>
-//     <div class="col-md-8">
-//       <div class="card-body">
-//         <h5 class="card-title">Find Me Around The Wen</h5>
-//         <ul>
-//           <li> Learning to Rap in the <a href="#">Community</a></li>
-//           <li> Turning the knobs in the <a href="#">Studio</a></li>
-//           <li> Check me out on the <a href="#">Socials</a></li>
-//         </ul>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-//   </div>
-// </div>`;
-//   renderToDom("#aboutMe", domString);
-// };
+const renderAbout = () => {
+  const domString = `<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
+    <img src="..." class="card-img-bottom" alt="...">
+    <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
+    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Find Me Around The Wen</h5>
+        <ul>
+          <li> Learning to Rap in the <a href="#">Community</a></li>
+          <li> Turning the knobs in the <a href="#">Studio</a></li>
+          <li> Check me out on the <a href="#">Socials</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>`;
+  renderToDom("#aboutMe", domString);
+};
+
+const pinnedRepo = (arr) => {
+  let domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
+  <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Customize your pins 
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit pinned items</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <ul id="repoList" class="list-group">
+        </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="savePinned" type="button" class="btn btn-primary">Save as Pinned</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  for (const pin of arr) {
+    if (pin.pinned) {
+      domString += `
+      <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${pin.name}</li>
+        <li class="list-group-item">${pin.description}</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-footer">
+        Card footer
+      </div>
+    </div>`;
+    }
+    renderToDom("#pinnedRepos", domString);
+  }
+};
 
 const renderFooter = () => {
   let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -136,7 +175,37 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-renderNav();
-renderProfile();
-// renderAbout();
-renderFooter();
+const pinRepoEvent = () => {
+  document.querySelector("#pinnedRepos").addEventListener("click", (e) => {
+    if (e.target.id === "repoModal-btn") {
+      let repoList = "";
+      for (const i of repo) {
+        repoList += `<li class="list-group-item">
+        <input id="repo${i.id}" class="form-check-input me-1" type="checkbox" value="..." aria-label="...">
+        ${i.name}
+      </li>`;
+      }
+      renderToDom("#repoList", repoList);
+    }
+    if (e.target.id === "savePinned") {
+      console.log(repoList);
+      var numFour = document.querySelector("#repo4");
+      if (numFour.checked) {
+        console.log("Susan checked the box");
+      } else {
+        console.log("no check");
+      }
+    }
+  });
+};
+
+const onStart = () => {
+  renderNav();
+  renderProfile();
+  renderAbout();
+  pinnedRepo(repo);
+  renderFooter();
+  pinRepoEvent();
+};
+
+onStart();
