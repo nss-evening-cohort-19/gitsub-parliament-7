@@ -59,7 +59,8 @@ const projectEventListeners = () => {
       isPublic: true,
       link: "https://google.com"
     }
-    console.log(newProjectObject)
+    projectDataSet.push(newProjectObject)
+    renderProjectCards(projectDataSet)
   })
 }
 
