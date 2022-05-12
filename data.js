@@ -74,7 +74,7 @@ const repo = [
     pinned: true,
     primaryLang: "Python",
     branches: 3,
-    favorite: false,
+    favorite: true,
   },
   {
     id: 3,
