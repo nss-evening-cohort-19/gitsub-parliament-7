@@ -1,10 +1,5 @@
 import { projectDataSet, repo, packages } from "./data.js";
-
-const renderToDom = (divId, textToRender) => {
-  const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = textToRender;
-};
-
+import { renderToDom } from "./utils/renderToDom.js";
 
 const renderNav = () => {
   let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,7 +23,7 @@ const renderNav = () => {
 
 const renderProfile = () => {
   let domString = `<div class="card" style="width: 18rem;">
-<img src="snoop.png" class="card-img-top" alt="...">
+<img src="images/snoop.png" class="card-img-top" alt="...">
 <div class="card-body">
   <h3 class="card-title">Snoop Dogg</h3>
   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -107,6 +102,55 @@ const renderAbout = () => {
   renderToDom("#aboutMe", domString);
 };
 
+const repoForm = () => {
+  let domString = "";
+  domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
+  <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Customize your pins 
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit pinned items</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <ul id="repoList" class="list-group">
+        </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="savePinned-btn" type="button" class="btn btn-primary">Save as Pinned</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  renderToDom("#repoForm", domString);
+};
+
+const pinnedRepo = (arr) => {
+  let domString = "";
+  for (const pin of arr) {
+    if (pin.pinned) {
+      domString += `
+      <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${pin.name}</li>
+        <li class="list-group-item">${pin.description}</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-footer">
+        Card footer
+      </div>
+    </div>`;
+    }
+    renderToDom("#pinnedRepos", domString);
+  }
+};
+
 const renderFooter = () => {
   let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -136,68 +180,41 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-// const reposOnDom = (array) => {
-// let domString = "";
-// for (const item of array){
-//   domString = `
-//   <div class="card" style="width: 18rem;">
-//   <ul class="list-group list-group-flush">
-//     <li class="list-group-item">${item.name}</li>
-//     <li class="list-group-item">${item.description}</li>
-//     <li class="list-group-item">A third item</li>
-//   </ul>
-//   <div class="card-footer">
-//     Card footer
-//   </div>
-// </div>`
-// };
-// renderToDom("#repoCards", domString)
-// };
-
-
-
-const renderProjectCards = (arr) => {
-  let domString = `
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-    Projects
-    </div>
-    <ul class="list-group list-group-flush">`;
-  for (const item of arr) {
-    domString += `<li class="list-group-item"><h5>${item.name}</h5> <p>${item.description}</p></li>`;
-  }
-  domString += `</ul>
-    </div>`;
-  renderToDom("#project-card-div", domString);
+const pinRepoEvent = () => {
+  document.querySelector("#repoForm").addEventListener("click", (e) => {
+    if (e.target.id === "repoModal-btn") {
+      let repoList = "";
+      for (const i of repo) {
+        repoList += `<li class="list-group-item">
+        <input id="${i.id}" class="form-check-input me-1" name="repos" type="checkbox" value="${i.name}" aria-label="...">
+        ${i.name}
+      </li>`;
+      }
+      renderToDom("#repoList", repoList);
+    }
+    if (e.target.id === "savePinned-btn") {
+      const checkboxes = document.getElementsByName("repos");
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          let indexed = repo.findIndex(
+            (find) => find.id === Number(checkboxes[i].id)
+          );
+          repo[indexed].pinned = true;
+          pinnedRepo(repo);
+        }
+      }
+    }
+  });
 };
 
-const renderProjectForm = () => {
-  let domString = `
-    <div>
-      <h2>Create a new project</h2>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Project board name</label>
-        <textarea class="form-control" id="projectBoardFormName" rows="3"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
-        <textarea class="form-control" id="projectBoardFormDescription" rows="3"></textarea>
-      </div>
-    </div>
-  `;
-  renderToDom("#project-form-div", domString)
-}
+const onStart = () => {
+  renderNav();
+  renderProfile();
+  renderAbout();
+  repoForm();
+  pinnedRepo(repo);
+  renderFooter();
+  pinRepoEvent();
+};
 
-
-
-renderNav();
-renderProfile();
-renderAbout();
-renderFooter();
-//reposOnDom(repo);
-renderProjectCards(projectDataSet);
-renderProjectForm()
-renderPackagesCards(packages);
-renderPackagesForm();
-// renderProjectCards(projectDataSet);
-// renderProjectForm();
+onStart();
