@@ -5,14 +5,14 @@ const renderRepos = (array) => {
   let domString = "";
   for (const item of array) {
     domString += `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 30rem;">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">${item.name}</li>
       <li class="list-group-item">${item.description}</li>
       <li class="list-group-item">${item.tags}</li>
     </ul>
-    <div class="card-footer">
-    ${item.primaryLang} ${item.branches} ${item.favorite ? '⭐' : ''}
+    <div class="card-footer"><div>${item.primaryLang} </div>
+    <div>${item.branches}</div> <div>${item.favorite ? '⭐ Star' : '☆ Star'}</div>
     </div>
   </div>`;
   }
