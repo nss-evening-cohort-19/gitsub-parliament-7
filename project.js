@@ -1,5 +1,6 @@
 import { projectDataSet } from "./data.js";
 import { renderToDom } from "./utils/renderToDom.js"
+import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 
 
 const renderProjectForm = () => {
@@ -65,8 +66,10 @@ const projectEventListeners = () => {
 }
 
 const startApp = () => {
+  renderNav()
   renderProjectCards(projectDataSet)
   renderProjectForm()
+  renderFooter()
   projectEventListeners()
 }
 
