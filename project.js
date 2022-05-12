@@ -28,9 +28,17 @@ const renderProjectCards = (arr) => {
     <div class="card-header">
     Projects
     </div>
+    <label for="projectCardsSortButton">Sort</label>
+      <select>
+        <option value="alphabetically">A-Z</option>
+      </select>
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
-    domString += `<li class="list-group-item"><h5>${item.name}</h5> <p>${item.description}</p></li>`;
+    domString += 
+    `<li class="list-group-item">
+        <h5>${item.name}</h5> 
+        <p>${item.description}</p>
+      </li>`;
   }
   domString += `</ul>  
   </div>`;
