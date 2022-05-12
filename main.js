@@ -23,7 +23,7 @@ const renderNav = () => {
 
 const renderProfile = () => {
   let domString = `<div class="card" style="width: 18rem;">
-<img src="snoop.png" class="card-img-top" alt="...">
+<img src="images/snoop.png" class="card-img-top" alt="...">
 <div class="card-body">
   <h3 class="card-title">Snoop Dogg</h3>
   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -102,8 +102,9 @@ const renderAbout = () => {
   renderToDom("#aboutMe", domString);
 };
 
-const pinnedRepo = (arr) => {
-  let domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
+const repoForm = () => {
+  let domString = "";
+  domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
   <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Customize your pins 
   </button>
@@ -122,12 +123,16 @@ const pinnedRepo = (arr) => {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="savePinned" type="button" class="btn btn-primary">Save as Pinned</button>
+          <button id="savePinned-btn" type="button" class="btn btn-primary">Save as Pinned</button>
         </div>
       </div>
     </div>
   </div>`;
+  renderToDom("#repoForm", domString);
+};
 
+const pinnedRepo = (arr) => {
+  let domString = "";
   for (const pin of arr) {
     if (pin.pinned) {
       domString += `
@@ -176,24 +181,25 @@ const renderFooter = () => {
 };
 
 const pinRepoEvent = () => {
-  document.querySelector("#pinnedRepos").addEventListener("click", (e) => {
+  document.querySelector("#repoForm").addEventListener("click", (e) => {
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
         repoList += `<li class="list-group-item">
-        <input id="repo${i.id}" class="form-check-input me-1" type="checkbox" value="..." aria-label="...">
+        <input id="${i.id}" class="form-check-input me-1" name="repos" type="checkbox" value="${i.name}" aria-label="...">
         ${i.name}
       </li>`;
       }
       renderToDom("#repoList", repoList);
     }
-    if (e.target.id === "savePinned") {
-      console.log(repoList);
-      var numFour = document.querySelector("#repo4");
-      if (numFour.checked) {
-        console.log("Susan checked the box");
-      } else {
-        console.log("no check");
+    if (e.target.id === "savePinned-btn") {
+      const checkboxes = document.getElementsByName("repos");
+      console.log(checkboxes);
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          repo[checkboxes[i].id - 1].pinned = true;
+          pinnedRepo(repo);
+        }
       }
     }
   });
@@ -203,6 +209,7 @@ const onStart = () => {
   renderNav();
   renderProfile();
   renderAbout();
+  repoForm();
   pinnedRepo(repo);
   renderFooter();
   pinRepoEvent();
