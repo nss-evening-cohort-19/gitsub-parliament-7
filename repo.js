@@ -1,5 +1,6 @@
 import { repo } from "./data.js";
 import { renderToDom } from "./utils/renderToDom.js";
+import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 
 const renderRepos = (array) => {
   let domString = "";
@@ -49,6 +50,8 @@ renderToDom("#repoForm", domString)
 
 //const newRepo
 const startApp = () => {
+  renderNav();
+  renderFooter();
   renderRepos(repo);
   renderSearch();
   renderForm();
