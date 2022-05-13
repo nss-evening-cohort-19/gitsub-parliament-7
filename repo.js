@@ -122,7 +122,7 @@ const eventListeners = () => {
       url: `https://www.nationalgeographic.com/animals/mammals/facts/domestic-cat`,
       pinned: false,
       branches: 4,
-      favorite: true,
+      favorite: false,
     };
 
     console.log(repo);
