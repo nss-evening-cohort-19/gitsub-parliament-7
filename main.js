@@ -183,7 +183,7 @@ const renderFooter = () => {
 const pinRepoEvent = () => {
   document.querySelector("#repoForm").addEventListener("click", (e) => {
     const checkboxes = document.getElementsByName("checkbox");
-    var max = 6;
+    var max = 2;
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
@@ -195,7 +195,10 @@ const pinRepoEvent = () => {
       renderToDom("#repoList", repoList);
     }
     if (e.target.name === "checkbox") {
-      console.log("checkbox checked");
+      for (let i = 0; i < checkboxes.length; i++) {
+        let sum = checkboxes[i].checked === true;
+        console.log(Number(sum));
+      }
     }
     if (e.target.id === "savePinned-btn") {
       for (let i = 0; i < checkboxes.length; i++) {
@@ -219,7 +222,6 @@ const onStart = () => {
   pinnedRepo(repo);
   renderFooter();
   pinRepoEvent();
-  checkedBoxes();
 };
 
 onStart();
