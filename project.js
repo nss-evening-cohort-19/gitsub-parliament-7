@@ -29,9 +29,14 @@ const renderProjectCards = (arr) => {
     <div class="card-header">
     Projects
     </div>
-    <label for="projectCardsSortButton">Sort</label>
-      <select>
-        <option value="alphabetically">A-Z</option>
+      <div class="mb-3>
+        <label for="projectSearchBar">Search</label>
+        <textarea class="form-control" id="projectSearchBar"></textarea>
+      </div>
+      <label for="projectCardSortButton">Sort</label>
+      <select id="projectCardSortButton">
+        <option value="">Select</option>
+        <option value="alphabet-normal">A-Z</option>
       </select>
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
@@ -62,7 +67,18 @@ const projectEventListeners = () => {
     }
     projectDataSet.push(newProjectObject)
     renderProjectCards(projectDataSet)
+    console.log(projectDataSet)
+    projectFormEl.reset()
   })
+  const projectSortSelect = document.querySelector("#projectCardSortButton")
+  projectSortSelect.addEventListener("change", (e) => {
+    let sortedProjectData = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
+    renderProjectCards(sortedProjectData)
+    console.log(projectSortSelect.selectedIndex)
+    projectSortSelect.selectedIndex = -1; 
+  })
+
+
 }
 
 const startApp = () => {
