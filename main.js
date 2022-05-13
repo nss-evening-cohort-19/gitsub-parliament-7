@@ -119,9 +119,12 @@ const repoForm = () => {
         </div>
         <div class="modal-body">
         <ul id="repoList" class="list-group">
+        <input disabled>
+        </input>
         </ul>
         </div>
         <div class="modal-footer">
+          <div id="maxMessage" class="maxMessage"></div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="savePinned-btn" type="button" data-bs-dismiss="modal" class="btn btn-primary">Save as Pinned</button>
         </div>
@@ -187,19 +190,18 @@ const pinRepoEvent = () => {
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
+        const pinned = i.pinned === true;
         repoList += `<li class="list-group-item">
-        <input id="${i.id}" class="form-check-input me-1" name="checkbox" type="checkbox" value="${i.name}" aria-label="...">
+        <input id="${i.id}" class="form-check-input me-1" ${
+          pinned ? "checked=true" : ""
+        } name="checkbox" type="checkbox" value="${i.name}" aria-label="...">
         ${i.name}
       </li>`;
       }
       renderToDom("#repoList", repoList);
+      limitChecks();
     }
-    if (e.target.name === "checkbox") {
-      for (let i = 0; i < checkboxes.length; i++) {
-        let sum = checkboxes[i].checked === true;
-        console.log(Number(sum));
-      }
-    }
+
     if (e.target.id === "savePinned-btn") {
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
@@ -207,11 +209,33 @@ const pinRepoEvent = () => {
             (find) => find.id === Number(checkboxes[i].id)
           );
           repo[indexed].pinned = true;
-          pinnedRepo(repo);
+        } else if (!checkboxes[i].checked) {
+          let indexed = repo.findIndex(
+            (find) => find.id === Number(checkboxes[i].id)
+          );
+          repo[indexed].pinned = false;
         }
+        pinnedRepo(repo);
       }
     }
   });
+};
+
+const limitChecks = () => {
+  const checkboxes = document.getElementsByName("checkbox");
+  const limit = 4;
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = function () {
+      var checkcount = 0;
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkcount += checkboxes[i].checked ? 1 : 0;
+      }
+      if (checkcount >= limit) {
+        document.querySelector("#maxMessage").innerHTML =
+          "Maximum Selection Reached";
+      }
+    };
+  }
 };
 
 const onStart = () => {
