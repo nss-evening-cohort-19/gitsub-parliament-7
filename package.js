@@ -50,6 +50,24 @@ const renderPackagesForm = () => {
   renderToDom("#packagesForm", domString);
 };
 
+const renderSearchPackages = () => {
+  let domString = "";
+  domString = `<div class="form-floating mb-3">
+        <input type="text" class="form-control" id="searchInput" placeholder="SEARCH">
+        <label for="searchInput">Search</label>
+      </div>`;
+  renderToDom("#search-packages", domString)
+};
+
+const search = (event) => {
+  const userInput = event.target.value.toLowerCase();
+  const searchResult = packages.filter(item => {
+    item.name.toLowerCase().includes(userInput) ||
+    item.description.toLowerCase().includes(userInput);
+  })
+  renderPackagesCards(searchResult);
+};
+
 function packageEvent() {
   const packageForm = document.querySelector('form');
   packageForm.addEventListener("submit", (e) => {
@@ -75,6 +93,8 @@ const startApp = () => {
   renderNav();
   renderFooter();
   packageID();
+  renderSearchPackages();
+  document.querySelector("#searchInput").addEventListener("keyup", search)
   packageEvent();
 };
 
