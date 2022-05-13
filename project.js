@@ -27,7 +27,7 @@ const renderSortMenu = () => {
   let domString = `
     <div class="mb-3>
         <label for="projectSearchBar">Search</label>
-        <textarea class="form-control" id="projectSearchBar""></textarea>
+        <input class="form-control" id="projectSearchBar" placeholder="Search..."></input>
       </div>
       <div id="projectCardSortDiv">
         <label for="projectCardSortButton">Sort</label>
@@ -60,6 +60,16 @@ const renderProjectCards = (arr) => {
   renderToDom("#project-card-div", domString);
 };
 
+const search = (event) => {
+  const eventLowerCase = event.target.value.toLowerCase(); 
+  console.log(eventLowerCase)
+  const searchResult = projectDataSet.filter((item) => 
+    item.name.toLowerCase().includes(eventLowerCase) ||
+    item.description.toLowerCase().includes(eventLowerCase)
+  )
+  renderProjectCards(searchResult)
+} 
+
 const projectEventListeners = () => {
   const projectFormEl = document.querySelector("#project-form-el"); 
   projectFormEl.addEventListener("submit", (e) => {
@@ -78,6 +88,9 @@ const projectEventListeners = () => {
     renderProjectCards(projectDataSet)
     projectFormEl.reset()
   })
+  ; 
+
+
   const projectSortSelect = document.querySelector("#projectCardSortButton"); 
   projectSortSelect.addEventListener("change", (e) => {
     const target = e.target.value; 
@@ -100,6 +113,7 @@ const startApp = () => {
   renderProjectForm()
   renderFooter()
   renderSortMenu()
+  document.querySelector("#projectSearchBar").addEventListener("keyup", search)
   projectEventListeners()
 }
 
