@@ -94,10 +94,8 @@ const projectEventListeners = () => {
   const projectSortSelect = document.querySelector("#projectCardSortButton"); 
   projectSortSelect.addEventListener("change", (e) => {
     const target = e.target.value; 
-    console.log(target)
     let sortedDataSet = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
     if(e.target.value === "alphabet-normal")  {
-      console.log(e)
       renderProjectCards(sortedDataSet)
     } else if (e.target.value === "alphabet-reverse") {
       sortedDataSet.reverse()
