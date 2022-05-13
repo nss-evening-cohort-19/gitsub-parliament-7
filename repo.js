@@ -30,6 +30,7 @@ const renderSearch = () => {
   <label for="searchInput">Search</label>`;
   renderToDom("#searchBar", domString);
 };
+
 const renderForm = () => {
   let domString = `
   <form>
@@ -64,7 +65,7 @@ const startApp = () => {
   renderNav();
   renderFooter();
   renderRepos(repo);
-  renderSearch();
+  renderSearch(search);
   renderForm();
 };
 startApp();
