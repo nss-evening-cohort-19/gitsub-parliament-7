@@ -23,21 +23,30 @@ const renderProjectForm = () => {
   renderToDom("#project-form-div", domString)
 }
 
+const renderSortMenu = () => {
+  let domString = `
+    <div class="mb-3>
+        <label for="projectSearchBar">Search</label>
+        <textarea class="form-control" id="projectSearchBar""></textarea>
+      </div>
+      <div id="projectCardSortDiv">
+        <label for="projectCardSortButton">Sort</label>
+        <select id="projectCardSortButton" name="projectCardSortDropdown">
+          <option value="">Select</option>
+          <option value="alphabet-normal">A-Z</option>
+          <option value="alphabet-reverse">Z-A</option>
+        </select>
+      </div>
+  `; 
+  renderToDom("#project-sort", domString)
+}
+
 const renderProjectCards = (arr) => {
   let domString = `
   <div class="card" style="width: 18rem;">
     <div class="card-header">
     Projects
-    </div>
-      <div class="mb-3>
-        <label for="projectSearchBar">Search</label>
-        <textarea class="form-control" id="projectSearchBar"></textarea>
-      </div>
-      <label for="projectCardSortButton">Sort</label>
-      <select id="projectCardSortButton">
-        <option value="">Select</option>
-        <option value="alphabet-normal">A-Z</option>
-      </select>
+    </div>    
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
     domString += 
@@ -67,18 +76,22 @@ const projectEventListeners = () => {
     }
     projectDataSet.push(newProjectObject)
     renderProjectCards(projectDataSet)
-    console.log(projectDataSet)
     projectFormEl.reset()
   })
-  const projectSortSelect = document.querySelector("#projectCardSortButton")
+  const projectSortSelect = document.querySelector("#projectCardSortButton"); 
   projectSortSelect.addEventListener("change", (e) => {
-    let sortedProjectData = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
-    renderProjectCards(sortedProjectData)
-    console.log(projectSortSelect.selectedIndex)
-    projectSortSelect.selectedIndex = -1; 
+    const target = e.target.value; 
+    console.log(target)
+    let sortedDataSet = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
+    if(e.target.value === "alphabet-normal")  {
+      console.log(e)
+      renderProjectCards(sortedDataSet)
+    } else if (e.target.value === "alphabet-reverse") {
+      sortedDataSet.reverse()
+      renderProjectCards(sortedDataSet)
+      projectSortSelect.selectedIndex = 0; 
+    }
   })
-
-
 }
 
 const startApp = () => {
@@ -86,6 +99,7 @@ const startApp = () => {
   renderProjectCards(projectDataSet)
   renderProjectForm()
   renderFooter()
+  renderSortMenu()
   projectEventListeners()
 }
 
