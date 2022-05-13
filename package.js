@@ -61,11 +61,11 @@ const renderSearchPackages = () => {
 
 const search = (event) => {
   const userInput = event.target.value.toLowerCase();
-  const searchResult = packages.filter(item => {
+  const searchResult = packages.filter(item => 
     item.name.toLowerCase().includes(userInput) ||
-    item.description.toLowerCase().includes(userInput);
-  })
-  renderPackagesCards(searchResult);
+    item.description.toLowerCase().includes(userInput)
+  );
+  renderPackagesCards(searchResult)
 };
 
 function packageEvent() {
@@ -94,7 +94,7 @@ const startApp = () => {
   renderFooter();
   packageID();
   renderSearchPackages();
-  document.querySelector("#searchInput").addEventListener("keyup", search)
+  document.querySelector("#searchInput").addEventListener("keyup", search);
   packageEvent();
 };
 
