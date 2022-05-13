@@ -48,7 +48,18 @@ const renderForm = () => {
 renderToDom("#repoForm", domString)
 };
 
-//const newRepo
+const search = (event) => {
+  console.log(event);
+  const userInput = event.target.value.toLowerCase();
+   const searchResult = repo.filter(item => 
+    item.name.toLowerCase().includes(userInput) ||
+    item.description.toLowerCase().includes(userInput) ||
+    item.primaryLang.toLowerCase().includes(userInput)
+    )
+    renderToDom("#repoCards",searchResult);
+};
+
+
 const startApp = () => {
   renderNav();
   renderFooter();
