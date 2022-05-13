@@ -96,16 +96,16 @@ const renderSearch = () => {
 // renderToDom("#repoForm", domString)
 // };
 
-// const search = (event) => {
-//   console.log(event);
-//   const userInput = event.target.value.toLowerCase();
-//    const searchResult = repo.filter(item =>
-//     item.name.toLowerCase().includes(userInput) ||
-//     item.description.toLowerCase().includes(userInput) ||
-//     item.primaryLang.toLowerCase().includes(userInput)
-//     )
-//     renderToDom(searchResult);
-// };
+const search = (event) => {
+  console.log(event);
+  const userInput = event.target.value.toLowerCase();
+   const searchResult = repo.filter((item) =>
+    item.name.toLowerCase().includes(userInput) ||
+    item.description.toLowerCase().includes(userInput) ||
+    item.primaryLang.toLowerCase().includes(userInput)
+    )
+    renderToDom("#repoCards", searchResult);
+};
 
 //EVENT LISTNERS//
 const eventListeners = () => {
@@ -141,6 +141,7 @@ const startApp = () => {
   renderRepos(repo);
   renderSearch();
   //renderForm();
+  document.querySelector("#searchInput").addEventListener('keyup',search);
   eventListeners();
 };
 startApp();
