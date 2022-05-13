@@ -123,7 +123,7 @@ const repoForm = () => {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="savePinned-btn" type="button" class="btn btn-primary">Save as Pinned</button>
+          <button id="savePinned-btn" type="button" data-bs-dismiss="modal" class="btn btn-primary">Save as Pinned</button>
         </div>
       </div>
     </div>
@@ -182,18 +182,22 @@ const renderFooter = () => {
 
 const pinRepoEvent = () => {
   document.querySelector("#repoForm").addEventListener("click", (e) => {
+    const checkboxes = document.getElementsByName("checkbox");
+    var max = 6;
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
         repoList += `<li class="list-group-item">
-        <input id="${i.id}" class="form-check-input me-1" name="repos" type="checkbox" value="${i.name}" aria-label="...">
+        <input id="${i.id}" class="form-check-input me-1" name="checkbox" type="checkbox" value="${i.name}" aria-label="...">
         ${i.name}
       </li>`;
       }
       renderToDom("#repoList", repoList);
     }
+    if (e.target.name === "checkbox") {
+      console.log("checkbox checked");
+    }
     if (e.target.id === "savePinned-btn") {
-      const checkboxes = document.getElementsByName("repos");
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
           let indexed = repo.findIndex(
@@ -215,6 +219,7 @@ const onStart = () => {
   pinnedRepo(repo);
   renderFooter();
   pinRepoEvent();
+  checkedBoxes();
 };
 
 onStart();
