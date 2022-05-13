@@ -23,16 +23,30 @@ const renderProjectForm = () => {
   renderToDom("#project-form-div", domString)
 }
 
+const renderSortMenu = () => {
+  let domString = `
+    <div class="mb-3>
+        <label for="projectSearchBar">Search</label>
+        <input class="form-control" id="projectSearchBar" placeholder="Search..."></input>
+      </div>
+      <div id="projectCardSortDiv">
+        <label for="projectCardSortButton">Sort</label>
+        <select id="projectCardSortButton" name="projectCardSortDropdown">
+          <option value="">Select</option>
+          <option value="alphabet-normal">A-Z</option>
+          <option value="alphabet-reverse">Z-A</option>
+        </select>
+      </div>
+  `; 
+  renderToDom("#project-sort", domString)
+}
+
 const renderProjectCards = (arr) => {
   let domString = `
   <div class="card" style="width: 18rem;">
     <div class="card-header">
     Projects
-    </div>
-    <label for="projectCardsSortButton">Sort</label>
-      <select>
-        <option value="alphabetically">A-Z</option>
-      </select>
+    </div>    
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
     domString += 
@@ -45,6 +59,16 @@ const renderProjectCards = (arr) => {
   </div>`;
   renderToDom("#project-card-div", domString);
 };
+
+const search = (event) => {
+  const eventLowerCase = event.target.value.toLowerCase(); 
+  console.log(eventLowerCase)
+  const searchResult = projectDataSet.filter((item) => 
+    item.name.toLowerCase().includes(eventLowerCase) ||
+    item.description.toLowerCase().includes(eventLowerCase)
+  )
+  renderProjectCards(searchResult)
+} 
 
 const projectEventListeners = () => {
   const projectFormEl = document.querySelector("#project-form-el"); 
@@ -62,6 +86,22 @@ const projectEventListeners = () => {
     }
     projectDataSet.push(newProjectObject)
     renderProjectCards(projectDataSet)
+    projectFormEl.reset()
+  })
+  ; 
+
+
+  const projectSortSelect = document.querySelector("#projectCardSortButton"); 
+  projectSortSelect.addEventListener("change", (e) => {
+    const target = e.target.value; 
+    let sortedDataSet = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
+    if(e.target.value === "alphabet-normal")  {
+      renderProjectCards(sortedDataSet)
+    } else if (e.target.value === "alphabet-reverse") {
+      sortedDataSet.reverse()
+      renderProjectCards(sortedDataSet)
+      projectSortSelect.selectedIndex = 0; 
+    }
   })
 }
 
@@ -70,6 +110,8 @@ const startApp = () => {
   renderProjectCards(projectDataSet)
   renderProjectForm()
   renderFooter()
+  renderSortMenu()
+  document.querySelector("#projectSearchBar").addEventListener("keyup", search)
   projectEventListeners()
 }
 
