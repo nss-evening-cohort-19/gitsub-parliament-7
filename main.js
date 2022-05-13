@@ -192,7 +192,7 @@ const pinRepoEvent = () => {
       for (const i of repo) {
         const pinned = i.pinned === true;
         repoList += `<li class="list-group-item">
-        <input id="${i.id}" class="form-check-input me-1" ${
+        <input id="${i.id}" class="checkboxes form-check-input me-1" ${
           pinned ? "checked=true" : ""
         } name="checkbox" type="checkbox" value="${i.name}" aria-label="...">
         ${i.name}
@@ -222,8 +222,10 @@ const pinRepoEvent = () => {
 };
 
 const limitChecks = () => {
+  let countMessage = document.querySelector("#maxMessage");
   const checkboxes = document.getElementsByName("checkbox");
   const limit = 4;
+  countMessage.innerHTML = "";
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].onclick = function () {
       var checkcount = 0;
@@ -231,8 +233,13 @@ const limitChecks = () => {
         checkcount += checkboxes[i].checked ? 1 : 0;
       }
       if (checkcount >= limit) {
-        document.querySelector("#maxMessage").innerHTML =
-          "Maximum Selection Reached";
+        countMessage.innerHTML = "Maximum Selection Reached";
+        let checked = document.querySelectorAll(".checkboxes");
+        for (const item of checked) {
+          if (item.checked === false) {
+            item.setAttribute("disabled", "");
+          }
+        }
       }
     };
   }
