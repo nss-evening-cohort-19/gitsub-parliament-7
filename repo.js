@@ -20,6 +20,38 @@ const renderRepos = (array) => {
   renderToDom("#repoCards", domString);
 };
 
+const renderRepo = () => {
+  const domString = `
+  <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+      <button 
+      type="submit" 
+      class="btn btn-success" 
+    >
+      Submit
+    </button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+`;
+renderToDom('#repoForm', domString);
+};
+
+
+
+
+
 const renderSearch = () => {
   let domString = `<input
     type="text"
@@ -31,41 +63,45 @@ const renderSearch = () => {
   renderToDom("#searchBar", domString);
 };
 
-const renderForm = () => {
-  let domString = `
-  <form>
-  <div class="mb-3">
-    <label for="" class="form-label">Create a new repository</label>
-    <div id="" class="form-text">Great repository names are short.</div>
-    <input type="text" class="form-control" id="" aria-describedby="createRepo">
+// const renderForm = () => {
+//   let domString = `
+//   <form>
+//   <div class="mb-3">
+//     <label for="" class="form-label">Create a new repository</label>
+//     <div id="" class="form-text">Great repository names are short.</div>
+//     <input type="text" class="form-control" id="" aria-describedby="createRepo">
    
-  </div>
-  <div class="mb-3">
-    <label for="" class="form-label">Description(optional)</label>
-    <input type="text" class="form-control" id="">
-  </div>
-  <button type="submit" class="btn btn-primary">Create repository</button>
-</form>`;
-renderToDom("#repoForm", domString)
-};
+//   </div>
+//   <div class="mb-3">
+//     <label for="" class="form-label">Description(optional)</label>
+//     <input type="text" class="form-control" id="">
+//   </div>
+//   <button type="submit" class="btn btn-primary">Create repository</button>
+// </form>`;
+// renderToDom("#repoForm", domString)
+// };
 
-const search = (event) => {
-  console.log(event);
-  const userInput = event.target.value.toLowerCase();
-   const searchResult = repo.filter(item => 
-    item.name.toLowerCase().includes(userInput) ||
-    item.description.toLowerCase().includes(userInput) ||
-    item.primaryLang.toLowerCase().includes(userInput)
-    )
-    renderToDom("#repoCards",searchResult);
-};
+
+
+
+// const search = (event) => {
+//   console.log(event);
+//   const userInput = event.target.value.toLowerCase();
+//    const searchResult = repo.filter(item => 
+//     item.name.toLowerCase().includes(userInput) ||
+//     item.description.toLowerCase().includes(userInput) ||
+//     item.primaryLang.toLowerCase().includes(userInput)
+//     )
+//     renderToDom(searchResult);
+// };
 
 
 const startApp = () => {
   renderNav();
   renderFooter();
   renderRepos(repo);
-  renderSearch(search);
-  renderForm();
+  renderSearch();
+  //renderForm();
+  renderRepo();
 };
 startApp();
