@@ -1,0 +1,18 @@
+@import "reset.css";
+
+.nav-link.active:active {
+  text-decoration: underline red;
+}
+
+.div-container {
+  display: flex;
+  flex-direction: column;
+}
+.card-img-top {
+  object-fit: cover;
+  border-radius: 50%;
+}
+.btn-secondary {
+  border: none;
+  background-color: #373c40 !important;
+}

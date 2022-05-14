@@ -1,7 +1,7 @@
 import { renderToDom } from "./utils/renderToDom.js";
 
 const renderFooter = () => {
-  let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light bg-light">
+  let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,9 @@ const renderFooter = () => {
 };
 
 const renderNav = () => {
-  let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  let domString = `<nav id="navSpecial" class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#">Text</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,5 +49,4 @@ const renderNav = () => {
   renderToDom("#nav-bar", domString);
 };
 
-
-export { renderNav, renderFooter}
+export { renderNav, renderFooter };

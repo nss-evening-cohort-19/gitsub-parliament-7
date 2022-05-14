@@ -59,12 +59,12 @@ const renderAbout = () => {
   const domString = `<div class="card">
   <div class="card-body">
     <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
-    <img src="..." class="card-img-bottom" alt="...">
+    <img src="images/snoop-wallpaper.jpeg" class="card-img-bottom" alt="...">
     <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="images/snoop-cartoon.png" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -149,6 +149,7 @@ const pinRepoEvent = () => {
       }
       renderToDom("#repoList", repoList);
       limitChecks();
+      a;
     }
     if (e.target.id === "savePinned-btn") {
       for (let i = 0; i < checkboxes.length; i++) {
