@@ -33,7 +33,7 @@ const renderSortMenu = () => {
       </div>
       <div id="projectCardSortDiv">
         <label for="projectCardSortButton">Sort</label>
-        <select id="projectCardSortButton" name="projectCardSortDropdown">
+        <select id="projectCardSortButton" name="projectCardSortDropdown" class="projectCardSortButton">
           <option value="">Select</option>
           <option value="alphabet-normal">A-Z</option>
           <option value="alphabet-reverse">Z-A</option>
