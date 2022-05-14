@@ -119,11 +119,14 @@ const repoForm = () => {
         </div>
         <div class="modal-body">
         <ul id="repoList" class="list-group">
+        <input disabled>
+        </input>
         </ul>
         </div>
         <div class="modal-footer">
+          <div id="maxMessage" class="maxMessage"></div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="savePinned-btn" type="button" class="btn btn-primary">Save as Pinned</button>
+          <button id="savePinned-btn" type="button" data-bs-dismiss="modal" class="btn btn-primary">Save as Pinned</button>
         </div>
       </div>
     </div>
@@ -182,29 +185,63 @@ const renderFooter = () => {
 
 const pinRepoEvent = () => {
   document.querySelector("#repoForm").addEventListener("click", (e) => {
+    const checkboxes = document.getElementsByName("checkbox");
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
+        const pinned = i.pinned === true;
         repoList += `<li class="list-group-item">
-        <input id="${i.id}" class="form-check-input me-1" name="repos" type="checkbox" value="${i.name}" aria-label="...">
+        <input id="${i.id}" class="checkboxes form-check-input me-1" ${
+          pinned ? "checked=true" : ""
+        } name="checkbox" type="checkbox" value="${i.name}" aria-label="...">
         ${i.name}
       </li>`;
       }
       renderToDom("#repoList", repoList);
+      limitChecks();
     }
+
     if (e.target.id === "savePinned-btn") {
-      const checkboxes = document.getElementsByName("repos");
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
           let indexed = repo.findIndex(
             (find) => find.id === Number(checkboxes[i].id)
           );
           repo[indexed].pinned = true;
-          pinnedRepo(repo);
+        } else if (!checkboxes[i].checked) {
+          let indexed = repo.findIndex(
+            (find) => find.id === Number(checkboxes[i].id)
+          );
+          repo[indexed].pinned = false;
         }
+        pinnedRepo(repo);
       }
     }
   });
+};
+
+const limitChecks = () => {
+  let countMessage = document.querySelector("#maxMessage");
+  const checkboxes = document.getElementsByName("checkbox");
+  const limit = 6;
+  countMessage.innerHTML = "";
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = function () {
+      var checkcount = 0;
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkcount += checkboxes[i].checked ? 1 : 0;
+      }
+      if (checkcount >= limit) {
+        countMessage.innerHTML = "Maximum Selection Reached";
+        let checked = document.querySelectorAll(".checkboxes");
+        for (const item of checked) {
+          if (item.checked === false) {
+            item.setAttribute("disabled", "");
+          }
+        }
+      }
+    };
+  }
 };
 
 const onStart = () => {
