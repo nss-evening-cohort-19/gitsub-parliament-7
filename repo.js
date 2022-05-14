@@ -67,6 +67,12 @@ const createRepo = () => {
   renderToDom("#repoForm", domString);
 };
 
+const repoID = () => {
+  repo.forEach((taco, index) => {
+    taco.id = index + 1;
+  });
+};
+
 const renderSearch = () => {
   let domString = `<input
     type="text"
@@ -78,33 +84,16 @@ const renderSearch = () => {
   renderToDom("#searchBar", domString);
 };
 
-// const renderForm = () => {
-//   let domString = `
-//   <form>
-//   <div class="mb-3">
-//     <label for="" class="form-label">Create a new repository</label>
-//     <div id="" class="form-text">Great repository names are short.</div>
-//     <input type="text" class="form-control" id="" aria-describedby="createRepo">
-
-//   </div>
-//   <div class="mb-3">
-//     <label for="" class="form-label">Description(optional)</label>
-//     <input type="text" class="form-control" id="">
-//   </div>
-//   <button type="submit" class="btn btn-primary">Create repository</button>
-// </form>`;
-// renderToDom("#repoForm", domString)
-// };
-
 const search = (event) => {
   console.log(event);
   const userInput = event.target.value.toLowerCase();
-   const searchResult = repo.filter(item =>
-    item.name.toLowerCase().includes(userInput) ||
-    item.description.toLowerCase().includes(userInput) ||
-    item.primaryLang.toLowerCase().includes(userInput)
-    )
-    renderRepos(searchResult);
+  const searchResult = repo.filter(
+    (item) =>
+      item.name.toLowerCase().includes(userInput) ||
+      item.description.toLowerCase().includes(userInput) ||
+      item.primaryLang.toLowerCase().includes(userInput)
+  );
+  renderRepos(searchResult);
 };
 
 //EVENT LISTNERS//
@@ -115,6 +104,7 @@ const eventListeners = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const newRepo = {
+      id: repo.length + 1,
       name: document.querySelector("#repoName").value,
       description: document.querySelector("#repoDescription").value,
       tags: document.querySelector("#repoTags").value,
@@ -125,9 +115,9 @@ const eventListeners = () => {
       favorite: false,
     };
 
-    console.log(repo);
+   
     repo.push(newRepo);
-    console.log(repo);
+    repoID();
     renderRepos(repo);
     formModal.hide();
     form.reset();
@@ -140,8 +130,7 @@ const startApp = () => {
   renderFooter();
   renderRepos(repo);
   renderSearch();
-  //renderForm();
-  document.querySelector("#searchInput").addEventListener('keyup',search);
+  document.querySelector("#searchInput").addEventListener("keyup", search);
   eventListeners();
 };
 startApp();
