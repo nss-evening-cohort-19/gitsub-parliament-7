@@ -186,7 +186,6 @@ const renderFooter = () => {
 const pinRepoEvent = () => {
   document.querySelector("#repoForm").addEventListener("click", (e) => {
     const checkboxes = document.getElementsByName("checkbox");
-    var max = 2;
     if (e.target.id === "repoModal-btn") {
       let repoList = "";
       for (const i of repo) {
@@ -224,7 +223,7 @@ const pinRepoEvent = () => {
 const limitChecks = () => {
   let countMessage = document.querySelector("#maxMessage");
   const checkboxes = document.getElementsByName("checkbox");
-  const limit = 4;
+  const limit = 6;
   countMessage.innerHTML = "";
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].onclick = function () {
