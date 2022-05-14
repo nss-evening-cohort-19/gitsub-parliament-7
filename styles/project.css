@@ -5,7 +5,7 @@
 .project-container {
   display: flex; 
   flex-wrap: wrap;
-  border: 2px solid black;
+  border: 2px solid #30363d;
   margin: 10px;
   padding: 20px; 
 }
@@ -33,4 +33,8 @@
 .card li {
   background-color: black;
   color: white; 
+}
+
+textarea.form-control {
+  height: 40px; 
 }

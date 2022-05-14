@@ -17,7 +17,7 @@ const renderProjectForm = () => {
         <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
         <textarea class="form-control" id="projectBoardFormDescription" rows="3"></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-success">Submit</button>
     </form>
     </div>
   `;
@@ -27,18 +27,22 @@ const renderProjectForm = () => {
 const renderSortMenu = () => {
   let domString = `
     <h2>Projects</h2>
-    <div class="mb-3>
-        <label for="projectSearchBar">Search</label>
+    <div class="mb-3 container">
+      <div class="row gx-6">
+        <div class="col">
+          <label for="projectSearchBar">Search</label>
         <input class="form-control" id="projectSearchBar" placeholder="Search..."></input>
-      </div>
-      <div id="projectCardSortDiv">
+        </div>
+        <div id="projectCardSortDiv" class="col">
         <label for="projectCardSortButton">Sort</label>
-        <select id="projectCardSortButton" name="projectCardSortDropdown" class="projectCardSortButton">
-          <option value="">Select</option>
-          <option value="alphabet-normal">A-Z</option>
-          <option value="alphabet-reverse">Z-A</option>
-        </select>
+          <select id="projectCardSortButton" name="projectCardSortDropdown" class="projectCardSortButton form-select">
+            <option value="">Select</option>
+            <option value="alphabet-normal">A-Z</option>
+            <option value="alphabet-reverse">Z-A</option>
+          </select>
+        </div>
       </div>
+    </div>
   `; 
   renderToDom("#project-sort", domString)
 }
