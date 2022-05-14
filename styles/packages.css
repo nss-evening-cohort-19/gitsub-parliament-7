@@ -14,11 +14,19 @@
     margin: 10px;
 }
 
-.card-img-top {
+.package-card-img-top {
   height: 50px;
   width: 50px;
 }
 
 #search-packages {
   margin: 10px;
+}
+
+#packagesForm {
+  margin: 10px;
+}
+
+#nav-bar {
+  background-color: black;
 }

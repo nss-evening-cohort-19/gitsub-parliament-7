@@ -13,7 +13,7 @@ const renderPackagesCards = (pack) => {
   let domString = "";
   for (const item of pack) {
     domString += `<div class="card" style="width: 18rem;">
-  <img src="${item.image}" class="card-img-top" alt="...">
+  <img src="${item.image}" class="package-card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${item.name}</h5>
     <p class="card-text">${item.description}</p>
