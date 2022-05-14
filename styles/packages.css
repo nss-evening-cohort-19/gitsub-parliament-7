@@ -1,4 +1,13 @@
-#container {
+.card {
+  background-color: transparent;
+}
+
+.card li {
+  background-color: black;
+  color: white; 
+}
+
+#packages-container {
    overflow: hidden;
 }
 
@@ -8,10 +17,14 @@
 }
 
 #packagesCards {
-    display: flex;
-    flex-flow: row wrap;
-    overflow: hidden; 
-    margin: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden; 
+  margin: 10px;
+}
+
+.card {
+  border: 1px solid #30363d;
 }
 
 .package-card-img-top {
@@ -25,8 +38,26 @@
 
 #packagesForm {
   margin: 10px;
+  max-width: 80%;
 }
 
-#nav-bar {
-  background-color: black;
+ 
+.form-floating {
+  color:#30363d;
+  width: 93%;
+}
+
+#footer-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+    
+}
+
+form {
+  color:#30363d;
+}
+
+.card-body {
+  margin: 5px;
 }

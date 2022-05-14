@@ -12,14 +12,14 @@ const packageID = () => {
 const renderPackagesCards = (pack) => {
   let domString = "";
   for (const item of pack) {
-    domString += `<div class="card" style="width: 18rem;">
-  <img src="${item.image}" class="package-card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${item.name}</h5>
-    <p class="card-text">${item.description}</p>
-    <a target="_blank" rel="noopener noreferrer"href=${item.link} class="btn btn-primary">Learn More</a>
-  </div>
-</div>`;
+    domString += 
+    `<div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><img src="${item.image}" class="package-card-img-top" alt="..."> ${item.name}</h5>
+        <p class="card-text">${item.description}</p>
+        <a target="_blank" rel="noopener noreferrer"href=${item.link} class="btn btn-primary">Learn More</a>
+      </div>
+    </div>`;
   }
   renderToDom("#packagesCards", domString);
 };
@@ -46,7 +46,7 @@ const renderPackagesForm = () => {
             <input id="packageUrl" class="form-control form-control-lg" type="text" placeholder="packageURL" id="packageURL" aria-label="packageURL" required>
             <label for="packageId">Package URL</label>
           </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Add New Package</button>
 </form>`;
   renderToDom("#packagesForm", domString);
 };
