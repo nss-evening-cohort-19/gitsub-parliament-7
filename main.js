@@ -1,25 +1,6 @@
-import { projectDataSet, repo, packages } from "./data.js";
+import { repo } from "./data.js";
 import { renderToDom } from "./utils/renderToDom.js";
-
-const renderNav = () => {
-  let domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="index.html">📖 Overview</a>
-        <a class="nav-link active" href="repo.html">🖥 Repositories</a>
-        <a class="nav-link active" href="project.html">🧮 Projects</a>
-        <a class="nav-link active" href="package.html">📦 Packages</a>
-      </div>
-    </div>
-  </div>
-</nav>`;
-  renderToDom("#nav-bar", domString);
-};
+import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 
 const renderProfile = () => {
   let domString = `<div class="card" style="width: 18rem;">
@@ -139,48 +120,17 @@ const pinnedRepo = (arr) => {
   for (const pin of arr) {
     if (pin.pinned) {
       domString += `
-      <div class="card" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${pin.name}</li>
-        <li class="list-group-item">${pin.description}</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-      <div class="card-footer">
-        Card footer
-      </div>
-    </div>`;
+      <div class="card" style="width: 30rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${pin.name}</li>
+    </ul>
+    <div class="card-footer"><div>${pin.primaryLang} </div>
+    <div>${pin.favorite ? "⭐ Star" : "☆ Star"}</div>
+    </div>
+  </div>`;
     }
     renderToDom("#pinnedRepos", domString);
   }
-};
-
-const renderFooter = () => {
-  let domString = `<footer><nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="#">2021 GitHub, Inc.</a>
-        <a class="nav-link active" href="#">Terms</a>
-        <a class="nav-link active" href="#">Privacy</a>
-        <a class="nav-link active" href="#">Security</a>
-        <a class="nav-link active" href="#">Status</a>
-        <a class="nav-link active" href="#">Help</a>
-        <a class="nav-link active" href="#">🙀</a>
-        <a class="nav-link active" href="#">Contact GitHub</a>
-        <a class="nav-link active" href="#">Pricing</a>
-        <a class="nav-link active" href="#">API</a>
-        <a class="nav-link active" href="#">Training</a>
-        <a class="nav-link active" href="#">Blog</a>
-        <a class="nav-link active" href="#">About</a>
-      </div>
-    </div>
-  </div>
-</nav></footer>`;
-  renderToDom("#footer", domString);
 };
 
 const pinRepoEvent = () => {
@@ -200,7 +150,6 @@ const pinRepoEvent = () => {
       renderToDom("#repoList", repoList);
       limitChecks();
     }
-
     if (e.target.id === "savePinned-btn") {
       for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
@@ -223,21 +172,51 @@ const pinRepoEvent = () => {
 const limitChecks = () => {
   let countMessage = document.querySelector("#maxMessage");
   const checkboxes = document.getElementsByName("checkbox");
-  const limit = 6;
+  const limit = 4;
   countMessage.innerHTML = "";
+  for (let i = 0; i < checkboxes.length; i++) {
+    let checkcount = 0;
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkcount += checkboxes[i].checked ? 1 : 0;
+      countMessage.innerHTML = `${limit - checkcount} remaining`;
+    }
+  }
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = function () {
+      let checkcount = 0;
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkcount += checkboxes[i].checked ? 1 : 0;
+        countMessage.innerHTML = `${limit - checkcount} remaining`;
+      }
+      if (checkcount >= limit) {
+        let checked = document.querySelectorAll(".checkboxes");
+        for (const item of checked) {
+          if (item.checked === false) {
+            item.setAttribute("disabled", "true");
+            clearCheck();
+          }
+        }
+      }
+    };
+  }
+};
+
+const clearCheck = () => {
+  let countMessage = document.querySelector("#maxMessage");
+  const checkboxes = document.getElementsByName("checkbox");
+  const limit = 4;
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].onclick = function () {
       var checkcount = 0;
       for (let i = 0; i < checkboxes.length; i++) {
         checkcount += checkboxes[i].checked ? 1 : 0;
       }
-      if (checkcount >= limit) {
-        countMessage.innerHTML = "Maximum Selection Reached";
+      if ((checkcount = limit - 1)) {
+        countMessage.innerHTML = `${limit - checkcount} remaining`;
         let checked = document.querySelectorAll(".checkboxes");
         for (const item of checked) {
-          if (item.checked === false) {
-            item.setAttribute("disabled", "");
-          }
+          item.removeAttribute("disabled");
+          limitChecks();
         }
       }
     };
