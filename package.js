@@ -1,6 +1,7 @@
 import {renderToDom} from "./utils/renderToDom.js"
 import { packages } from "./data.js"
 import { renderNav, renderFooter } from "./renderHeaderFooter.js";
+import { renderProfile } from "./renderProfile.js";
 
 const packageID = () => {
   packages.forEach((pack, index) => {
@@ -90,6 +91,7 @@ function packageEvent() {
 const startApp = () => {
   renderPackagesCards(packages);
   renderPackagesForm();
+  renderProfile();
   renderNav();
   renderFooter();
   packageID();
