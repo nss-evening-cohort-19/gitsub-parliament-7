@@ -26,6 +26,7 @@ const renderProjectForm = () => {
 
 const renderSortMenu = () => {
   let domString = `
+    <h2>Projects</h2>
     <div class="mb-3>
         <label for="projectSearchBar">Search</label>
         <input class="form-control" id="projectSearchBar" placeholder="Search..."></input>
@@ -44,10 +45,7 @@ const renderSortMenu = () => {
 
 const renderProjectCards = (arr) => {
   let domString = `
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-    Projects
-    </div>    
+  <div class="card"">    
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
     domString += 

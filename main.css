@@ -1,3 +1,16 @@
 body {
   background-color: blanchedalmond;
 }
+
+.container {
+  display: flex;
+}
+
+.project-container {
+  display: flex; 
+  flex-wrap: wrap;
+}
+
+.project-cards {
+  flex-wrap: wrap;
+}
