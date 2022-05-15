@@ -69,7 +69,7 @@ const search = (event) => {
   renderPackagesCards(searchResult)
 };
 
-function packageEvent() {
+function packagesEvent() {
   const packageForm = document.querySelector('form');
   packageForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -97,7 +97,7 @@ const startApp = () => {
   packageID();
   renderSearchPackages();
   document.querySelector("#searchInput").addEventListener("keyup", search);
-  packageEvent();
+  packagesEvent();
 };
 
 startApp();
