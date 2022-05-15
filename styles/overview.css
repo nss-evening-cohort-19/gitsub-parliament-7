@@ -6,8 +6,9 @@
 
 .div-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
+
 .card-img-top {
   object-fit: cover;
   border-radius: 50%;
@@ -15,4 +16,69 @@
 .btn-secondary {
   border: none;
   background-color: #373c40 !important;
+}
+.aboutMe {
+  padding: 0px, 15px, 15px, 15px;
+}
+.profile {
+  margin: 10px;
+  padding: 5px;
+}
+.content {
+  display: flex;
+  max-width: 73%;
+  flex-direction: column;
+}
+#aroundWeb {
+  max-height: 250px;
+}
+#snoopCartoon {
+  max-height: 200px;
+}
+.repo-div {
+  display: flex;
+  flex-direction: column;
+}
+.pinnedRepoTitle {
+  display: inline-block;
+}
+#repoModal-btn {
+  align-items: right;
+  border: none;
+  margin-right: 15px;
+  transition: none;
+  box-shadow: none;
+}
+button.repo-btn:hover {
+  color: #58a6ff !important;
+}
+
+.repoForm {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.pinnedRepos {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.repo-card {
+  border: 1px solid #303642;
+  border-radius: 6px;
+  display: flex;
+  min-width: 425px;
+  min-height: 100px;
+  margin: 5px;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: red !important;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+.snoop-wall {
+  max-width: 750px;
 }

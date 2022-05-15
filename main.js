@@ -59,16 +59,16 @@ const renderAbout = () => {
   const domString = `<div class="card">
   <div class="card-body">
     <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
-    <img src="images/snoop-wallpaper.jpeg" class="card-img-bottom" alt="...">
+    <img src="images/snoop-wallpaper.jpeg" class="snoop-wall card-img-bottom" alt="...">
     <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" id="aroundWeb">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="images/snoop-cartoon.png" class="img-fluid rounded-start" alt="...">
+    <div class="col-md-4" >
+      <img src="images/snoop-cartoon.png" id="snoopCartoon"class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Find Me Around The Wen</h5>
+        <h5 class="card-title">Find Me Around The Web</h5>
         <ul>
           <li> Learning to Rap in the <a href="#">Community</a></li>
           <li> Turning the knobs in the <a href="#">Studio</a></li>
@@ -86,7 +86,7 @@ const renderAbout = () => {
 const repoForm = () => {
   let domString = "";
   domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
-  <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button id="repoModal-btn" type="button" class="repo-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Customize your pins 
   </button>
   
@@ -119,15 +119,12 @@ const pinnedRepo = (arr) => {
   let domString = "";
   for (const pin of arr) {
     if (pin.pinned) {
-      domString += `
-      <div class="card" style="width: 30rem;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${pin.name}</li>
-    </ul>
-    <div class="card-footer"><div>${pin.primaryLang} </div>
-    <div>${pin.favorite ? "⭐ Star" : "☆ Star"}</div>
+      domString += `<div class=repo-card>
+      <div class="card">
+      <span class="cardTxt list-group-item">${pin.name}</span>
+    <div class="card-footer"><div><span class="dot"></span>${pin.primaryLang}</div>
     </div>
-  </div>`;
+  </div></div>`;
     }
     renderToDom("#pinnedRepos", domString);
   }
@@ -173,7 +170,7 @@ const pinRepoEvent = () => {
 const limitChecks = () => {
   let countMessage = document.querySelector("#maxMessage");
   const checkboxes = document.getElementsByName("checkbox");
-  const limit = 4;
+  const limit = 6;
   countMessage.innerHTML = "";
   for (let i = 0; i < checkboxes.length; i++) {
     let checkcount = 0;
