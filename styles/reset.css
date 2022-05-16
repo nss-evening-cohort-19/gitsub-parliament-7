@@ -3,9 +3,14 @@ html {
   background-color: #0d1118 !important;
   color: #c9d1d9 !important;
 }
+.nav-link.active:active {
+  text-decoration: underline red;
+}
 .profile {
   flex: 0 1 20%;
   display: flex;
+  margin: 30px;
+  max-height: 1050px;
 }
 .card-img-top {
   object-fit: cover;
@@ -14,6 +19,7 @@ html {
 }
 div.profile-card > * {
   flex: 1;
+  max-width: 18rem;
 }
 .stats {
   margin: 8px 0 8px 0;
@@ -74,4 +80,7 @@ div.profile-card > * {
   justify-content: space-around;
   border-top: solid #303642 1px;
   padding-top: 15px;
+}
+.label-background {
+  background: none !important;
 }

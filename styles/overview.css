@@ -1,8 +1,5 @@
 @import "reset.css";
 
-.nav-link.active:active {
-  text-decoration: underline red;
-}
 .container {
   max-width: 1300px;
   margin-left: auto;
@@ -67,4 +64,11 @@ button.repo-btn:hover {
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+}
+.pin-repo-url {
+  color: #58a6ff !important;
+  text-decoration: none;
+}
+.pin-repo-url:hover {
+  text-decoration: underline;
 }

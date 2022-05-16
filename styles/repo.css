@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   margin: 5px;
+  max-height: 850px;
+  overflow: scroll;
 }
 .card {
   background-color: black;

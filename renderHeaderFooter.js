@@ -31,12 +31,12 @@ const renderFooter = () => {
 
 const renderNav = () => {
   let domString = `<nav id="navSpecial" class="nav-cont navbar navbar-expand-lg navbar-light">
-  <div class="nav-cont container-fluid">
-    <a class="git-icon navbar-brand" href="#">GitSub </a>
-        <a class="nav-item nav-link active" aria-current="page" href="index.html">📖 Overview</a>
-        <a class="nav-item nav-link active" href="repo.html">🖥 Repositories</a>
-        <a class="nav-item nav-link active" href="project.html">🧮 Projects</a>
-        <a class="nav-item nav-link active" href="package.html">📦 Packages</a>
+  <div class="nav nav-cont container-fluid">
+    <a class="git-icon navbar-brand" target="blank" href="https://gitsub-parliment-7.netlify.app">GitSub </a>
+        <a class="current nav-item nav-link active" aria-current="page" href="index.html">📖 Overview</a>
+        <a class="current nav-item nav-link active" href="repo.html">🖥 Repositories</a>
+        <a class="current nav-item nav-link active" href="project.html">🧮 Projects</a>
+        <a class="current nav-item nav-link active" href="package.html">📦 Packages</a>
   </div>
 </nav>`;
   renderToDom("#nav-bar", domString);
