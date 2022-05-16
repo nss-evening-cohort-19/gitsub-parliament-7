@@ -7,16 +7,19 @@ const renderRepos = (array) => {
   let domString = "";
   for (const item of array) {
     domString += `
-    <div class="card" style="width: 30rem;">
+    <div class="card" style="width: 40rem;">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${item.name}</li>
-      <li class="list-group-item">${item.description}</li>
-      <li class="list-group-item">${item.tags}</li>
+      <li class="list-group-item repo-color"><h5>${item.name}</h5></li>
+      <li class="list-group-item repo-color2">${item.description}</li>
+      <li class="list-group-item repo-color tags-size">${item.tags}</li>
     </ul>
-    <div class="card-footer"><div>${item.primaryLang} </div>
-    <div>${item.branches}</div> <div>${
+    <div class="card-footer"><div>🟡 ${item.primaryLang} </div>
+    <div>${item.branches}</div> 
+    <div>
+    <button class="btn-fav" id="fav--${item.id}">${
       item.favorite ? "⭐ Star" : "☆ Star"
-    }</div>
+    }</button>
+    </div>
     </div>
   </div>`;
   }
@@ -26,36 +29,36 @@ const renderRepos = (array) => {
 const createRepo = () => {
   let domString = "";
   domString = `
-  <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create-repo">
+  <div class="btn-right"><button type="button" class="btn btn-light create" data-bs-toggle="modal" data-bs-target="#create-repo">
   Create Repository
-  </button>
+  </button></div>
   
   <div class="modal" id="create-repo" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content card">
       <div class="modal-header">
-        <h5 class="modal-title">Create Repository</h5>
+        <h5 class="modal-title card">Create Repository</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form>
+      <form class="card">
       <div class="form-floating mb-3">
-        <input id="repoName" class="form-control form-control-lg" type="text" placeholder="repoName" id="repoName" aria-label="repoName" required>
+        <input id="repoName" class="form-control form-control-lg card modal-border" type="text" placeholder="repoName" id="repoName" aria-label="repoName" required>
         <label for="repoName">Repository Name</label>
       </div>
       
       <div class="form-floating mb-3">
-        <input id="repoDescription" class="form-control form-control-lg" type="text" placeholder="repoDescription" id="repoDescription" aria-label="repoDescription" required>
+        <input id="repoDescription" class="form-control form-control-lg card modal-border" type="text" placeholder="repoDescription" id="repoDescription" aria-label="repoDescription" required>
         <label for="repoDescription">Repository Decription</label>
       </div>
       
       <div class="form-floating mb-3">
-        <input id="repoTags" class="form-control form-control-lg" type="text" placeholder="repoTags" id="repoTags" aria-label="repoTags" required>
+        <input id="repoTags" class="form-control form-control-lg card modal-border" type="text" placeholder="repoTags" id="repoTags" aria-label="repoTags" required>
         <label for="repoTags">Repoository Tags</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input id="primaryLang" class="form-control form-control-lg" type="text" placeholder="primaryLang" id="primaryLang" aria-label="primaryLang" required>
+        <input id="primaryLang" class="form-control form-control-lg card modal-border" type="text" placeholder="primaryLang" id="primaryLang" aria-label="primaryLang" required>
         <label for="primaryLang"> Primary Language</label>
       </div>
 <button type="submit" class="btn btn-primary">Submit</button>
@@ -74,16 +77,14 @@ const repoID = () => {
   });
 };
 
-
-
 const renderSearch = () => {
-  let domString = `<input
+  let domString = ` <input
     type="text"
-    class="form-control"
+    class="form-control search-color"
     id="searchInput"
-    placeholder="SEARCH"
+    placeholder="Find A Repository"
   />
-  <label for="searchInput">Search</label>`;
+  <label for="searchInput">Find A Repository</label>`;
   renderToDom("#searchBar", domString);
 };
 
@@ -118,14 +119,28 @@ const eventListeners = () => {
       favorite: false,
     };
 
-   
     repo.push(newRepo);
     repoID();
     renderRepos(repo);
-    console.log(repo)
     formModal.hide();
     form.reset();
   });
+
+  const favBtn = () => {
+    document.querySelector("#repoCards").addEventListener("click", (e) => {
+      if (e.target.id) {
+        const [method, id] = e.target.id.split("--");
+        const index = repo.findIndex((taco) => taco.id === parseInt(id));
+        console.log(id);
+        if (e.target.id.includes("fav")) {
+          console.log("Fav Button Pressed");
+          // repo.favorite = true;
+          // renderRepos(repo);
+        }
+      }
+    });
+  };
+  favBtn();
 };
 
 const startApp = () => {

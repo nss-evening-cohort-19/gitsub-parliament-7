@@ -58,7 +58,7 @@ const repo = [
     description:
       "Test testLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi  test test",
     url: `https://www.nationalgeographic.com/animals/mammals/facts/domestic-cat`,
-    tags: ["netify", "jamstack", "medical"],
+    tags: ["netify", "jamstack", "medical","serverless", "react", "lorem-ipsum-generator"],
     pinned: false,
     primaryLang: "Java",
     branches: 4,
@@ -70,7 +70,7 @@ const repo = [
     description:
       "Test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi  test test",
     url: `https://www.nationalgeographic.com/animals/mammalshttps://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-jumbo.jpg?quality=75&auto=webp/facts/domestic-cat`,
-    tags: ["netify", "jamstack", "medical"],
+    tags: ["react", "countdown", "hacktoberfest"],
     pinned: false,
     primaryLang: "Python",
     branches: 3,
@@ -82,7 +82,7 @@ const repo = [
     description:
       "Test test test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ",
     url: `https://cdn.theatlantic.com/thumbor/viW9N1IQLbCrJ0HMtPRvXPXShkU=/0x131:2555x1568/976x549/media/img/mt/2017/06/shutterstock_319985324/original.jpg`,
-    tags: ["netify", "jamstack", "medical"],
+    tags: ["http", "gifs", "rihanna"],
     pinned: false,
     primaryLang: "Javascript",
     branches: 3,
@@ -94,7 +94,7 @@ const repo = [
     description:
       "Test test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi  test",
     url: `https://static.scientificamerican.com/sciam/cache/file/32665E6F-8D90-4567-9769D59E11DB7F26_source.jpg?w=590&h=800&7E4B4CAD-CAE1-4726-93D6A160C2B068B2`,
-    tags: ["netify", "jamstack", "medical"],
+    tags: ["netify", "status-code", "medical"],
     pinned: true,
     primaryLang: "C+",
     branches: 3,
@@ -106,7 +106,7 @@ const repo = [
     description:
       "Test test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi  test",
     url: `https://www.rd.com/wp-content/uploads/2021/01/GettyImages-1175550351.jpg?resize=1536,1004`,
-    tags: ["netify", "jamstack", "medical"],
+    tags: ["donation", "landing-page", "rihanna"],
     pinned: true,
     primaryLang: "Go",
     branches: 3,
