@@ -1,13 +1,15 @@
+@import "reset.css";
+
 .container {
   display: flex;
 }
 
 .project-container {
-  display: flex; 
+  display: flex;
   flex-wrap: wrap;
   border: 2px solid #30363d;
   margin: 10px;
-  padding: 20px; 
+  padding: 20px;
 }
 
 .project-cards {
@@ -21,20 +23,19 @@
 }
 
 #project-form-div {
-  width: 100%; 
+  width: 100%;
 }
-
 
 .card {
   background-color: black;
-  color: white; 
+  color: white;
 }
 
 .card li {
   background-color: black;
-  color: white; 
+  color: white;
 }
 
 textarea.form-control {
-  height: 40px; 
+  height: 40px;
 }

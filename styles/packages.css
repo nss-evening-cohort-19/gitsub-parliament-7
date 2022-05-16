@@ -1,19 +1,16 @@
-<<<<<<< HEAD
-#container {
-  overflow: hidden;
-=======
+@import "reset.css";
+
 .card {
   background-color: transparent;
 }
 
 .card li {
   background-color: black;
-  color: white; 
+  color: white;
 }
 
 #packages-container {
-   overflow: hidden;
->>>>>>> main
+  overflow: hidden;
 }
 
 #profile {
@@ -24,11 +21,7 @@
 #packagesCards {
   display: flex;
   flex-flow: row wrap;
-<<<<<<< HEAD
   overflow: hidden;
-=======
-  overflow: hidden; 
->>>>>>> main
   margin: 10px;
 }
 
@@ -50,9 +43,8 @@
   max-width: 80%;
 }
 
- 
 .form-floating {
-  color:#30363d;
+  color: #30363d;
   width: 93%;
 }
 
@@ -60,11 +52,10 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-    
 }
 
 form {
-  color:#30363d;
+  color: #30363d;
 }
 
 .card-body {

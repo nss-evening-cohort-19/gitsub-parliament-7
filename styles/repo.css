@@ -1,3 +1,5 @@
+@import "reset.css";
+
 .container {
   display: flex;
   justify-content: flex-start;
@@ -45,11 +47,11 @@ input.search-color {
 .tags-size {
   font-size: small;
 }
- .btn-right {
-   margin: 10px;
-   text-align: right;
- }
- .create {
-   background-color: green;
-   color: white;
- }
+.btn-right {
+  margin: 10px;
+  text-align: right;
+}
+.create {
+  background-color: green;
+  color: white;
+}
