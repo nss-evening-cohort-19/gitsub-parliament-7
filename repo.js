@@ -89,7 +89,6 @@ const renderSearch = () => {
 };
 
 const search = (event) => {
-  console.log(event);
   const userInput = event.target.value.toLowerCase();
   const searchResult = repo.filter(
     (item) =>
@@ -131,9 +130,7 @@ const eventListeners = () => {
       if (e.target.id) {
         const [method, id] = e.target.id.split("--");
         const index = repo.findIndex((taco) => taco.id === parseInt(id));
-        console.log(id);
         if (e.target.id.includes("fav")) {
-          console.log("Fav Button Pressed");
           // repo.favorite = true;
           // renderRepos(repo);
         }
