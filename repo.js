@@ -84,7 +84,7 @@ const renderSearch = () => {
     id="searchInput"
     placeholder="Find A Repository"
   />
-  <label class="label-background" for="searchInput">Find A Repository</label>`;
+  <label for="searchInput">Find A Repository</label>`;
   renderToDom("#searchBar", domString);
 };
 
@@ -142,7 +142,7 @@ const eventListeners = () => {
 
 const startApp = () => {
   createRepo();
-  renderNav("repositories");
+  renderNav();
   renderProfile();
   renderFooter();
   renderRepos(repo);
