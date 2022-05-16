@@ -57,3 +57,7 @@ input.search-color {
   background-color: green;
   color: white;
 }
+
+.repo-form {
+  display: flex;
+}

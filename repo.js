@@ -44,22 +44,22 @@ const createRepo = () => {
       <form class="card">
       <div class="form-floating mb-3">
         <input id="repoName" class="form-control form-control-lg card modal-border" type="text" placeholder="repoName" id="repoName" aria-label="repoName" required>
-        <label for="repoName">Repository Name</label>
+        <label class="label-background" for="repoName">Repository Name</label>
       </div>
       
       <div class="form-floating mb-3">
         <input id="repoDescription" class="form-control form-control-lg card modal-border" type="text" placeholder="repoDescription" id="repoDescription" aria-label="repoDescription" required>
-        <label for="repoDescription">Repository Decription</label>
+        <label class="label-background" for="repoDescription">Repository Decription</label>
       </div>
       
       <div class="form-floating mb-3">
         <input id="repoTags" class="form-control form-control-lg card modal-border" type="text" placeholder="repoTags" id="repoTags" aria-label="repoTags" required>
-        <label for="repoTags">Repoository Tags</label>
+        <label class="label-background" for="repoTags">Repoository Tags</label>
       </div>
 
       <div class="form-floating mb-3">
         <input id="primaryLang" class="form-control form-control-lg card modal-border" type="text" placeholder="primaryLang" id="primaryLang" aria-label="primaryLang" required>
-        <label for="primaryLang"> Primary Language</label>
+        <label class="label-background" for="primaryLang"> Primary Language</label>
       </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -89,7 +89,6 @@ const renderSearch = () => {
 };
 
 const search = (event) => {
-  console.log(event);
   const userInput = event.target.value.toLowerCase();
   const searchResult = repo.filter(
     (item) =>
@@ -131,9 +130,7 @@ const eventListeners = () => {
       if (e.target.id) {
         const [method, id] = e.target.id.split("--");
         const index = repo.findIndex((taco) => taco.id === parseInt(id));
-        console.log(id);
         if (e.target.id.includes("fav")) {
-          console.log("Fav Button Pressed");
           // repo.favorite = true;
           // renderRepos(repo);
         }
