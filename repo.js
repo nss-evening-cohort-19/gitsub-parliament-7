@@ -44,7 +44,7 @@ const createRepo = () => {
       <form class="card">
       <div class="form-floating mb-3">
         <input id="repoName" class="form-control form-control-lg card modal-border" type="text" placeholder="repoName" id="repoName" aria-label="repoName" required>
-        <label for="repoName">Repository Name</label>
+        <label class="label-background" for="repoName">Repository Name</label>
       </div>
       
       <div class="form-floating mb-3">
@@ -142,7 +142,7 @@ const eventListeners = () => {
 
 const startApp = () => {
   createRepo();
-  renderNav();
+  renderNav("repositories");
   renderProfile();
   renderFooter();
   renderRepos(repo);
