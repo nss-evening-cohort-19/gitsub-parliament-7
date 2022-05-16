@@ -24,7 +24,7 @@
 }
 input.search-color {
   background-color: black;
-  color: white;
+  color: hsl(0, 0%, 45%);
 }
 
 .btn-fav {
@@ -48,4 +48,8 @@ input.search-color {
  .btn-right {
    margin: 10px;
    text-align: right;
+ }
+ .create {
+   background-color: green;
+   color: white;
  }

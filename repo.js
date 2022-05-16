@@ -29,7 +29,7 @@ const renderRepos = (array) => {
 const createRepo = () => {
   let domString = "";
   domString = `
-  <div class="btn-right"><button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create-repo">
+  <div class="btn-right"><button type="button" class="btn btn-light create" data-bs-toggle="modal" data-bs-target="#create-repo">
   Create Repository
   </button></div>
   
