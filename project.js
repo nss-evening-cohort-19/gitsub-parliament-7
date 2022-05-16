@@ -1,8 +1,7 @@
 import { projectDataSet } from "./data.js";
-import { renderToDom } from "./utils/renderToDom.js"
+import { renderToDom } from "./utils/renderToDom.js";
 import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 import { renderProfile } from "./renderProfile.js";
-
 
 const renderProjectForm = () => {
   let domString = `
@@ -21,8 +20,8 @@ const renderProjectForm = () => {
     </form>
     </div>
   `;
-  renderToDom("#project-form-div", domString)
-}
+  renderToDom("#project-form-div", domString);
+};
 
 const renderSortMenu = () => {
   let domString = `
@@ -43,17 +42,16 @@ const renderSortMenu = () => {
         </div>
       </div>
     </div>
-  `; 
-  renderToDom("#project-sort", domString)
-}
+  `;
+  renderToDom("#project-sort", domString);
+};
 
 const renderProjectCards = (arr) => {
   let domString = `
   <div class="card"">    
     <ul class="list-group list-group-flush">`;
   for (const item of arr) {
-    domString += 
-    `<li class="list-group-item">
+    domString += `<li class="list-group-item">
         <h5>${item.name}</h5> 
         <p>${item.description}</p>
       </li>`;
@@ -64,59 +62,60 @@ const renderProjectCards = (arr) => {
 };
 
 const search = (event) => {
-  const eventLowerCase = event.target.value.toLowerCase(); 
-  console.log(eventLowerCase)
-  const searchResult = projectDataSet.filter((item) => 
-    item.name.toLowerCase().includes(eventLowerCase) ||
-    item.description.toLowerCase().includes(eventLowerCase)
-  )
-  renderProjectCards(searchResult)
-} 
+  const eventLowerCase = event.target.value.toLowerCase();
+  console.log(eventLowerCase);
+  const searchResult = projectDataSet.filter(
+    (item) =>
+      item.name.toLowerCase().includes(eventLowerCase) ||
+      item.description.toLowerCase().includes(eventLowerCase)
+  );
+  renderProjectCards(searchResult);
+};
 
 const projectEventListeners = () => {
-  const projectFormEl = document.querySelector("#project-form-el"); 
+  const projectFormEl = document.querySelector("#project-form-el");
   projectFormEl.addEventListener("submit", (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newProjectName = e.target[0].value;
-    const newProjectDescription = e.target[1].value; 
+    const newProjectDescription = e.target[1].value;
     const newProjectObject = {
-      id: projectDataSet[projectDataSet.length-1].id +1,
+      id: projectDataSet[projectDataSet.length - 1].id + 1,
       name: newProjectName,
       description: newProjectDescription,
       updatedTimeStamp: "05-08-2022",
       isPublic: true,
-      link: "https://google.com"
-    }
-    projectDataSet.push(newProjectObject)
-    renderProjectCards(projectDataSet)
-    projectFormEl.reset()
-  })
-  ; 
+      link: "https://google.com",
+    };
+    projectDataSet.push(newProjectObject);
+    renderProjectCards(projectDataSet);
+    projectFormEl.reset();
+  });
 
-
-  const projectSortSelect = document.querySelector("#projectCardSortButton"); 
+  const projectSortSelect = document.querySelector("#projectCardSortButton");
   projectSortSelect.addEventListener("change", (e) => {
-    const target = e.target.value; 
-    let sortedDataSet = projectDataSet.sort((a, b) => a.name.localeCompare(b.name))
-    if(e.target.value === "alphabet-normal")  {
-      renderProjectCards(sortedDataSet)
+    const target = e.target.value;
+    let sortedDataSet = projectDataSet.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    if (e.target.value === "alphabet-normal") {
+      renderProjectCards(sortedDataSet);
     } else if (e.target.value === "alphabet-reverse") {
-      sortedDataSet.reverse()
-      renderProjectCards(sortedDataSet)
-      projectSortSelect.selectedIndex = 0; 
+      sortedDataSet.reverse();
+      renderProjectCards(sortedDataSet);
+      projectSortSelect.selectedIndex = 0;
     }
-  })
-}
+  });
+};
 
 const startApp = () => {
-  renderNav()
-  renderProfile()
-  renderProjectCards(projectDataSet)
-  renderProjectForm()
-  renderFooter()
-  renderSortMenu()
-  document.querySelector("#projectSearchBar").addEventListener("keyup", search)
-  projectEventListeners()
-}
+  renderNav("projects");
+  renderProfile();
+  renderProjectCards(projectDataSet);
+  renderProjectForm();
+  renderFooter();
+  renderSortMenu();
+  document.querySelector("#projectSearchBar").addEventListener("keyup", search);
+  projectEventListeners();
+};
 
-startApp()
+startApp();

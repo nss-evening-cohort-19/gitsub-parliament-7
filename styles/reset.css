@@ -1,0 +1,86 @@
+*,
+html {
+  background-color: #0d1118 !important;
+  color: #c9d1d9 !important;
+}
+.nav .current {
+  border-bottom: solid #f78166 2px;
+}
+.profile {
+  flex: 0 1 20%;
+  display: flex;
+  margin: 30px;
+  max-height: 1200px;
+}
+.card-img-top {
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 1;
+}
+div.profile-card > * {
+  flex: 1;
+  max-width: 18rem;
+}
+.stats {
+  margin: 8px 0 8px 0;
+}
+.follow {
+  display: inline-block;
+  font-size: 12px;
+  padding: 0px;
+  margin: 2px;
+}
+.points-div {
+  margin: none;
+  padding: none;
+}
+.points {
+  text-decoration: none;
+}
+
+.snoop-card {
+  padding-bottom: 0px;
+}
+.org-title {
+  margin: 0px 0px 10px -4px;
+}
+.card-link {
+  height: 40px;
+  width: 40px;
+  border-radius: 10%;
+  margin: 2px;
+}
+.sponsors {
+  display: flex;
+  flex-wrap: wrap;
+}
+.spon-img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  margin: 8px 0px 0px 0;
+}
+.nav-bar {
+  width: 100%;
+}
+.nav-item {
+  margin: 20px 0px 20px 0px;
+}
+.navbar > .container-fluid {
+  width: 100%;
+  justify-content: space-around;
+}
+.git-icon {
+  font-size: 48px;
+  font-weight: bold;
+}
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-top: solid #303642 1px;
+  padding-top: 15px;
+}
+.label-background {
+  background: none !important;
+}

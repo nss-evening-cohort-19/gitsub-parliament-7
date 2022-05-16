@@ -1,5 +1,5 @@
-import {renderToDom} from "./utils/renderToDom.js"
-import { packages } from "./data.js"
+import { renderToDom } from "./utils/renderToDom.js";
+import { packages } from "./data.js";
 import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 import { renderProfile } from "./renderProfile.js";
 
@@ -12,8 +12,7 @@ const packageID = () => {
 const renderPackagesCards = (pack) => {
   let domString = "";
   for (const item of pack) {
-    domString += 
-    `<div class="card" style="width: 18rem;">
+    domString += `<div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><img src="${item.image}" class="package-card-img-top" alt="..."> ${item.name}</h5>
         <p class="card-text">${item.description}</p>
@@ -29,22 +28,22 @@ const renderPackagesForm = () => {
   domString = `<form>
           <div class="form-floating mb-3">
             <input id="packageName" class="form-control form-control-lg" type="text" placeholder="packageName" id="packageName" aria-label="packageName" required>
-            <label for="packageName">Package Name</label>
+            <label class="label-background" for="packageName">Package Name</label>
           </div>
           
           <div class="form-floating mb-3">
             <input id="packageDescription" class="form-control form-control-lg" type="text" placeholder="packageDescription" id="packageDescription" aria-label="packageDescription" required>
-            <label for="packageDescription">Package Decription</label>
+            <label class="label-background" for="packageDescription">Package Decription</label>
           </div>
           
           <div class="form-floating mb-3">
             <input id="imageUrl" class="form-control form-control-lg" type="text" placeholder="imageURL" id="imageUrl" aria-label="imageUrl" required>
-            <label for="packageId">ImageURL</label>
+            <label class="label-background" for="packageId">ImageURL</label>
           </div>
 
           <div class="form-floating mb-3">
             <input id="packageUrl" class="form-control form-control-lg" type="text" placeholder="packageURL" id="packageURL" aria-label="packageURL" required>
-            <label for="packageId">Package URL</label>
+            <label class="label-background" for="packageId">Package URL</label>
           </div>
   <button type="submit" class="btn btn-primary">Add New Package</button>
 </form>`;
@@ -55,22 +54,23 @@ const renderSearchPackages = () => {
   let domString = "";
   domString = `<div class="form-floating mb-3">
         <input type="text" class="form-control" id="searchInput" placeholder="SEARCH">
-        <label for="searchInput">Search</label>
+        <label class="label-background" for="searchInput">Search</label>
       </div>`;
-  renderToDom("#search-packages", domString)
+  renderToDom("#search-packages", domString);
 };
 
 const search = (event) => {
   const userInput = event.target.value.toLowerCase();
-  const searchResult = packages.filter(item => 
-    item.name.toLowerCase().includes(userInput) ||
-    item.description.toLowerCase().includes(userInput)
+  const searchResult = packages.filter(
+    (item) =>
+      item.name.toLowerCase().includes(userInput) ||
+      item.description.toLowerCase().includes(userInput)
   );
-  renderPackagesCards(searchResult)
+  renderPackagesCards(searchResult);
 };
 
 function packagesEvent() {
-  const packageForm = document.querySelector('form');
+  const packageForm = document.querySelector("form");
   packageForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let newPackage = {
@@ -84,15 +84,13 @@ function packagesEvent() {
     renderPackagesCards(packages);
     packageForm.reset();
   });
-
-
-};
+}
 
 const startApp = () => {
   renderPackagesCards(packages);
   renderPackagesForm();
   renderProfile();
-  renderNav();
+  renderNav("packages");
   renderFooter();
   packageID();
   renderSearchPackages();
