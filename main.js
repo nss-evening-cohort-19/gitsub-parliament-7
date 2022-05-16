@@ -3,53 +3,46 @@ import { renderToDom } from "./utils/renderToDom.js";
 import { renderNav, renderFooter } from "./renderHeaderFooter.js";
 
 const renderProfile = () => {
-  let domString = `<div class="card" style="width: 18rem;">
+  let domString = `<div class="profile-card card" >
 <img src="images/snoop.png" class="card-img-top" alt="...">
-<div class="card-body">
+<div class="snoop-card card-body">
   <h3 class="card-title">Snoop Dogg</h3>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <p class="card-text">“You don't get respect if you don't deserve it.”</p>
   <button type="button" class="btn btn-secondary btn-sm">Follow</button>
   <button type="button" class="btn btn-secondary btn-sm">💓 Sponsor</button>
   <button type="button" class="btn btn-secondary btn-sm">...</button>
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item">1.8K followers</li>
-  <li class="list-group-item">27 Following</li>
-  <li class="list-group-item">⭐️ 329</li>
-</ul>
+  <div class="stats">
+  <span class="follow list-group-item">1.8K followers</span>
+  <span class="follow list-group-item">27 Following</span>
+  <span class="follow list-group-item">⭐️ 329</span>
+  </div>
 </div>
-<div class="card-body">
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">📍 New York, New York</li>
-  <a href="#"><li href="#" class="list-group-item">📩 github@aboutsnoop.com</li></a>
-  <a href="#"><li class="list-group-item">⛓ https://www.aboutsnoop.com</li></a>
-  <a href="#"><li  class="list-group-item">🕊 @indigitacolor</li></a>
+  <a class="points" href="#"><li class="list-group-item">📍 New York, New York</li></a>
+  <a class="points" href="#"><li class="list-group-item">📩  github@aboutsnoop.com</li></a>
+  <a class="points" href="#"><li class="list-group-item">🕊 @indigitacolor</li></a>
 </ul>
-</div>
-<div class="card-body">
 <h5 class="card-title">Highlights</h5>
 <ul class="list-group list-group-flush">
   <li class="list-group-item">📍 New York, New York</li>
-  <a href="#"><li class="list-group-item">❄️ Arcitc Code Vault Contributor</li></a>
-  <a href="#"><li class="list-group-item">⭐️ GitHub Star</li></a>
-  <a href ="#"><li class="list-group-item">⭐️ Pro</li></a>
+  <a class="points"  href="#"><li class="list-group-item">❄️ Arcitc Code Vault</li></a>
+  <a class="points"  href="#"><li class="list-group-item">⭐️ GitHub Star</li></a>
+  <a class="points"  href ="#"><li class="list-group-item">⭐️ Pro</li></a>
 </ul>
+<div class="card-body">
+<h5 class="org-title card-title">Organizations</h5>
+  <a href="https://github.com/nss-evening-cohort-19" class="card-link"><img class="card-link" src="https://avatars.githubusercontent.com/u/100445756?s=64&v=4"/></a>
+  <a href="https://github.com/Urban-Green-Lab" class="card-link"><img class="card-link" src="https://avatars.githubusercontent.com/u/61482433?s=64&v=4"/></a>
+  <a href="https://github.com/HealthTeacher" class="card-link"><img class="card-link" src="https://avatars.githubusercontent.com/u/1416897?s=64&v=4"/></a>
 </div>
 <div class="card-body">
-<h5 class="card-title">Organizations</h5>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-</div>
-<div class="card-body">
-<h5 class="card-title">Sponsors</h5>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
+<h5 class="org-title card-title">Sponsors</h5>
+<div class="sponsors">
+  <a href="https://github.com/rochelle-rossman" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/102299152?s=96&v=4"/></a>
+  <a href="https://github.com/blackcl3" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/24661749?s=96&v=4"/></a>
+  <a href="https://github.com/ImadOttallah" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/99231245?s=96&v=4"/></a>
+  <a href="https://github.com/TwoFivinClimber" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/100610149?s=96&v=4"/></a>
+ </div>
 </div>
 </div>`;
   renderToDom("#profile", domString);
