@@ -72,3 +72,7 @@ button.repo-btn:hover {
 .pin-repo-url:hover {
   text-decoration: underline;
 }
+
+.checkboxes {
+  border: 1px #c9d1d9 solid;
+}
