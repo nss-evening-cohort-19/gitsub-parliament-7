@@ -1,74 +1,22 @@
 import { repo } from "./data.js";
 import { renderToDom } from "./utils/renderToDom.js";
 import { renderNav, renderFooter } from "./renderHeaderFooter.js";
-
-const renderProfile = () => {
-  let domString = `<div class="card" style="width: 18rem;">
-<img src="images/snoop.png" class="card-img-top" alt="...">
-<div class="card-body">
-  <h3 class="card-title">Snoop Dogg</h3>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <button type="button" class="btn btn-secondary btn-sm">Follow</button>
-  <button type="button" class="btn btn-secondary btn-sm">💓 Sponsor</button>
-  <button type="button" class="btn btn-secondary btn-sm">...</button>
-  <ul class="list-group list-group-flush">
-  <li class="list-group-item">1.8K followers</li>
-  <li class="list-group-item">27 Following</li>
-  <li class="list-group-item">⭐️ 329</li>
-</ul>
-</div>
-<div class="card-body">
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">📍 New York, New York</li>
-  <a href="#"><li href="#" class="list-group-item">📩 github@aboutsnoop.com</li></a>
-  <a href="#"><li class="list-group-item">⛓ https://www.aboutsnoop.com</li></a>
-  <a href="#"><li  class="list-group-item">🕊 @indigitacolor</li></a>
-</ul>
-</div>
-<div class="card-body">
-<h5 class="card-title">Highlights</h5>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">📍 New York, New York</li>
-  <a href="#"><li class="list-group-item">❄️ Arcitc Code Vault Contributor</li></a>
-  <a href="#"><li class="list-group-item">⭐️ GitHub Star</li></a>
-  <a href ="#"><li class="list-group-item">⭐️ Pro</li></a>
-</ul>
-</div>
-<div class="card-body">
-<h5 class="card-title">Organizations</h5>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-</div>
-<div class="card-body">
-<h5 class="card-title">Sponsors</h5>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-  <a href="#" class="card-link">Photo</a>
-</div>
-</div>`;
-  renderToDom("#profile", domString);
-};
+import { renderProfile } from "./renderProfile.js";
 
 const renderAbout = () => {
   const domString = `<div class="card">
   <div class="card-body">
     <h5 class="card-title">Hi I'm Snoop Dogg 👋🏾 🎤</h5>
-    <img src="..." class="card-img-bottom" alt="...">
+    <img src="images/snoop-wallpaper.jpeg" class="snoop-wall card-img-bottom" alt="...">
     <p class="card-text">"I am thrilled and appreciative of the opportunity to acquire the iconic and culturally significant Death Row Records brand, which has immense untapped future value," the 50-year-old Snoop Dogg said in a statement. "It feels good to have ownership of the label I was part of at the beginning of my career and as one of the founding members. This is an extremely meaningful moment for me."</p>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" id="aroundWeb">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+    <div class="col-md-4" >
+      <img src="images/snoop-cartoon.png" id="snoopCartoon"class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Find Me Around The Wen</h5>
+        <h5 class="card-title">Find Me Around The Web</h5>
         <ul>
           <li> Learning to Rap in the <a href="#">Community</a></li>
           <li> Turning the knobs in the <a href="#">Studio</a></li>
@@ -86,7 +34,7 @@ const renderAbout = () => {
 const repoForm = () => {
   let domString = "";
   domString = `<h3 class="pinnedRepoTitle">Popular Repositories</h3><!-- Button trigger modal -->
-  <button id="repoModal-btn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button id="repoModal-btn" type="button" class="repo-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Customize your pins 
   </button>
   
@@ -119,15 +67,12 @@ const pinnedRepo = (arr) => {
   let domString = "";
   for (const pin of arr) {
     if (pin.pinned) {
-      domString += `
-      <div class="card" style="width: 30rem;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${pin.name}</li>
-    </ul>
-    <div class="card-footer"><div>${pin.primaryLang} </div>
-    <div>${pin.favorite ? "⭐ Star" : "☆ Star"}</div>
+      domString += `<div class=repo-card>
+      <div class="card">
+      <span class="cardTxt list-group-item"><a class="pin-repo-url" target="blank" href="${pin.url}">${pin.name}</a></span>
+    <div class="card-footer"><div><span class="dot"></span>${pin.primaryLang}</div>
     </div>
-  </div>`;
+  </div></div>`;
     }
     renderToDom("#pinnedRepos", domString);
   }
@@ -172,7 +117,7 @@ const pinRepoEvent = () => {
 const limitChecks = () => {
   let countMessage = document.querySelector("#maxMessage");
   const checkboxes = document.getElementsByName("checkbox");
-  const limit = 4;
+  const limit = 6;
   countMessage.innerHTML = "";
   for (let i = 0; i < checkboxes.length; i++) {
     let checkcount = 0;
@@ -224,7 +169,7 @@ const clearCheck = () => {
 };
 
 const onStart = () => {
-  renderNav();
+  renderNav("overview");
   renderProfile();
   renderAbout();
   repoForm();
