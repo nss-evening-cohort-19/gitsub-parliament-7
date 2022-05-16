@@ -49,17 +49,17 @@ const createRepo = () => {
       
       <div class="form-floating mb-3">
         <input id="repoDescription" class="form-control form-control-lg card modal-border" type="text" placeholder="repoDescription" id="repoDescription" aria-label="repoDescription" required>
-        <label for="repoDescription">Repository Decription</label>
+        <label class="label-background" for="repoDescription">Repository Decription</label>
       </div>
       
       <div class="form-floating mb-3">
         <input id="repoTags" class="form-control form-control-lg card modal-border" type="text" placeholder="repoTags" id="repoTags" aria-label="repoTags" required>
-        <label for="repoTags">Repoository Tags</label>
+        <label class="label-background" for="repoTags">Repoository Tags</label>
       </div>
 
       <div class="form-floating mb-3">
         <input id="primaryLang" class="form-control form-control-lg card modal-border" type="text" placeholder="primaryLang" id="primaryLang" aria-label="primaryLang" required>
-        <label for="primaryLang"> Primary Language</label>
+        <label class="label-background" for="primaryLang"> Primary Language</label>
       </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -84,7 +84,7 @@ const renderSearch = () => {
     id="searchInput"
     placeholder="Find A Repository"
   />
-  <label for="searchInput">Find A Repository</label>`;
+  <label class="label-background" for="searchInput">Find A Repository</label>`;
   renderToDom("#searchBar", domString);
 };
 
