@@ -94,7 +94,6 @@ const pinRepoEvent = () => {
       }
       renderToDom("#repoList", repoList);
       limitChecks();
-      a;
     }
     if (e.target.id === "savePinned-btn") {
       for (let i = 0; i < checkboxes.length; i++) {
@@ -170,7 +169,7 @@ const clearCheck = () => {
 };
 
 const onStart = () => {
-  renderNav();
+  renderNav("overview");
   renderProfile();
   renderAbout();
   repoForm();

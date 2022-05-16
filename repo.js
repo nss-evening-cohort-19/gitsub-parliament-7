@@ -145,7 +145,7 @@ const eventListeners = () => {
 
 const startApp = () => {
   createRepo();
-  renderNav();
+  renderNav("repositories");
   renderProfile();
   renderFooter();
   renderRepos(repo);

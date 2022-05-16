@@ -3,14 +3,14 @@ html {
   background-color: #0d1118 !important;
   color: #c9d1d9 !important;
 }
-.nav-link.active:active {
-  text-decoration: underline red;
+.nav .current {
+  border-bottom: solid #f78166 2px;
 }
 .profile {
   flex: 0 1 20%;
   display: flex;
   margin: 30px;
-  max-height: 1050px;
+  max-height: 1200px;
 }
 .card-img-top {
   object-fit: cover;

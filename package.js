@@ -90,7 +90,7 @@ const startApp = () => {
   renderPackagesCards(packages);
   renderPackagesForm();
   renderProfile();
-  renderNav();
+  renderNav("packages");
   renderFooter();
   packageID();
   renderSearchPackages();

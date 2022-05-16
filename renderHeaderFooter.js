@@ -29,14 +29,22 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-const renderNav = () => {
+const renderNav = (page) => {
   let domString = `<nav id="navSpecial" class="nav-cont navbar navbar-expand-lg navbar-light">
-  <div class="nav nav-cont container-fluid">
-    <a class="git-icon navbar-brand" target="blank" href="https://gitsub-parliment-7.netlify.app">GitSub </a>
-        <a class="current nav-item nav-link active" aria-current="page" href="index.html">📖 Overview</a>
-        <a class="current nav-item nav-link active" href="repo.html">🖥 Repositories</a>
-        <a class="current nav-item nav-link active" href="project.html">🧮 Projects</a>
-        <a class="current nav-item nav-link active" href="package.html">📦 Packages</a>
+  <div id="pages" class="nav nav-cont container-fluid">
+    <a  class="git-icon navbar-brand" target="blank" href="https://gitsub-parliment-7.netlify.app">GitSub </a>
+        <a id="Overview"class="${
+          page === "overview" ? "current" : ""
+        } nav-item nav-link active" aria-current="page" href="index.html">📖 Overview</a>
+        <a id="Repositories"class="${
+          page === "repositories" ? "current" : ""
+        } nav-item nav-link active" href="repo.html">🖥 Repositories</a>
+        <a id="Projects" class="${
+          page === "projects" ? "current" : ""
+        } nav-item nav-link active" href="project.html">🧮 Projects</a>
+        <a id="Packages" class="${
+          page === "packages" ? "current" : ""
+        } nav-item nav-link active" href="package.html">📦 Packages</a>
   </div>
 </nav>`;
   renderToDom("#nav-bar", domString);
