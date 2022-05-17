@@ -84,3 +84,9 @@ div.profile-card > * {
 .label-background {
   background: none !important;
 }
+.spon {
+  margin: 8px;
+}
+.foot {
+  color: #58a6ff !important;
+}

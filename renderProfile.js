@@ -16,14 +16,14 @@ export const renderProfile = () => {
   </div>
 </div>
 <ul class="list-group list-group-flush">
-  <a class="points" href="#"><li class="list-group-item">📍 New York, New York</li></a>
+  <a class="points" href="#"><li class="list-group-item">📍 Long Beach, California</li></a>
   <a class="points" href="#"><li class="list-group-item">📩  github@aboutsnoop.com</li></a>
   <a class="points" href="#"><li class="list-group-item">🕊 @indigitacolor</li></a>
 </ul>
 <div class="card-body">
 <h5 class="org-title card-title">Highlights</h5>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">📍 New York, New York</li>
+  <li class="list-group-item">📍 Long Beach, California</li>
   <a class="points"  href="#"><li class="list-group-item">❄️ Arcitc Code Vault</li></a>
   <a class="points"  href="#"><li class="list-group-item">⭐️ GitHub Star</li></a>
   <a class="points"  href ="#"><li class="list-group-item">⭐️ Pro</li></a>
@@ -38,10 +38,10 @@ export const renderProfile = () => {
 <div class="card-body">
 <h5 class="org-title card-title">Sponsors</h5>
 <div class="sponsors">
-  <a href="https://github.com/rochelle-rossman" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/102299152?s=96&v=4"/></a>
-  <a href="https://github.com/blackcl3" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/24661749?s=96&v=4"/></a>
-  <a href="https://github.com/ImadOttallah" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/99231245?s=96&v=4"/></a>
-  <a href="https://github.com/TwoFivinClimber" class="card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/100610149?s=96&v=4"/></a>
+  <a href="https://github.com/rochelle-rossman" class="spon card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/102299152?s=96&v=4"/></a>
+  <a href="https://github.com/blackcl3" class="spon card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/24661749?s=96&v=4"/></a>
+  <a href="https://github.com/ImadOttallah" class="spon card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/99231245?s=96&v=4"/></a>
+  <a href="https://github.com/TwoFivinClimber" class="spon card-link"><img class="spon-img" src="https://avatars.githubusercontent.com/u/100610149?s=96&v=4"/></a>
  </div>
 </div>
 </div>`;
