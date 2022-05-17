@@ -1,0 +1,63 @@
+@import "reset.css";
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.containerTwo {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  max-height: 850px;
+  overflow: scroll;
+}
+.card {
+  background-color: black;
+  color: white;
+}
+
+.modal-border {
+  border: 1px solid hsl(0, 0%, 15%);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px hsl(0, 0%, 15%);
+}
+input.search-color {
+  background-color: black;
+  color: hsl(0, 0%, 45%);
+}
+
+.btn-fav {
+  color: white;
+  background-color: hsl(0, 0%, 15%);
+  border: solid 1px black;
+}
+
+.repo-color {
+  background-color: black;
+  color: lightblue;
+}
+.repo-color2 {
+  background-color: black;
+  color: hsl(0, 0%, 45%);
+  font-size: small;
+}
+.tags-size {
+  font-size: small;
+}
+.btn-right {
+  margin: 10px;
+  text-align: right;
+}
+.create {
+  background-color: green;
+  color: white;
+}
+
+.repo-form {
+  display: flex;
+}

@@ -1,0 +1,78 @@
+@import "reset.css";
+
+.container {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.div-container {
+  display: flex;
+}
+.btn-secondary {
+  border: none;
+  background-color: #373c40 !important;
+}
+.aboutMe {
+  padding: 0px, 15px, 15px, 15px;
+  display: flex;
+}
+.content {
+  display: flex;
+  max-width: 73%;
+  flex-direction: column;
+}
+#aroundWeb {
+  max-height: 250px;
+}
+#snoopCartoon {
+  max-height: 200px;
+}
+.repo-div {
+  display: flex;
+  flex-direction: column;
+}
+.pinnedRepoTitle {
+  display: inline-block;
+}
+#repoModal-btn {
+  border: none;
+  margin-right: 15px;
+  transition: none;
+  box-shadow: none;
+}
+button.repo-btn:hover {
+  color: #58a6ff !important;
+}
+.repoForm {
+  display: flex;
+  justify-content: space-between;
+}
+.pinnedRepos {
+  display: flex;
+  flex-wrap: wrap;
+}
+.repo-card {
+  border: 1px solid #303642;
+  border-radius: 6px;
+  margin: 10px;
+  flex: 0 1 47%;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: red !important;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+.pin-repo-url {
+  color: #58a6ff !important;
+  text-decoration: none;
+}
+.pin-repo-url:hover {
+  text-decoration: underline;
+}
+
+.checkboxes {
+  border: 1px #c9d1d9 solid;
+}

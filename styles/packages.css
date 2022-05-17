@@ -1,0 +1,65 @@
+@import "reset.css";
+
+.card {
+  background-color: transparent;
+}
+
+.card li {
+  background-color: black;
+  color: white; 
+}
+
+#packages-container {
+   overflow: hidden;
+}
+
+#profile {
+    float:left; 
+    margin: 10px;
+}
+
+#packagesCards {
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden; 
+  margin: 10px;
+}
+
+.card {
+  border: 1px solid #30363d;
+}
+
+.package-card-img-top {
+  height: 50px;
+  width: 50px;
+}
+
+#search-packages {
+  margin: 10px;
+}
+
+#packagesForm {
+  margin: 10px;
+  max-width: 80%;
+}
+
+ 
+.form-floating {
+  color:#30363d;
+  width: 93%;
+}
+
+#footer-container {
+  clear: both;
+  bottom: 0;
+  width: 100%;
+    
+}
+
+form {
+  color:#30363d;
+}
+
+.card-body {
+  margin: 5px;
+}
